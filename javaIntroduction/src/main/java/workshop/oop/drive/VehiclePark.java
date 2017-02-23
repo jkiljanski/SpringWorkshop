@@ -10,7 +10,7 @@ public class VehiclePark {
     public List<Car> cars = new ArrayList<>();
     public List<Bike> bikes = new ArrayList<>();
 
-    VehicleCleaner universalCleaner = new VehicleCleaner();
+    private final VehicleCleaner universalCleaner = new VehicleCleaner();
 
 
     public void addVehicle(Car car) {

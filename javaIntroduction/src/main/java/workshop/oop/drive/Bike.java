@@ -5,4 +5,9 @@ public class Bike implements Vehicle {
     public void driveForward(int kilometers) {
 
     }
+
+    @Override
+    public Fuel fuelUsed() {
+        return new Fuel(FuelType.MANUAL);
+    }
 }
