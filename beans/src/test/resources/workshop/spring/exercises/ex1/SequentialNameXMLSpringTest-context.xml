@@ -7,7 +7,7 @@
         <property name="counter" ref="nextNumberGiver"></property>
     </bean>
     <bean class="workshop.spring.exercises.ex1.NextNumberGiver" id="nextNumberGiver">
-
+        <constructor-arg value="1"></constructor-arg>
     </bean>
 
 </beans>

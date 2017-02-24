@@ -10,7 +10,9 @@
 
     <bean class="workshop.spring.exercises.ex1.NameGenerator" id="nameGenerator">
         <property name="counter" >
-            <bean class="workshop.spring.exercises.ex1.EvenNumberGiver"/>
+            <bean class="workshop.spring.exercises.ex1.NextNumberGiver">
+            <constructor-arg value="2"></constructor-arg>
+            </bean>
         </property>
     </bean>
 
