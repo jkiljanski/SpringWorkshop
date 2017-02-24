@@ -1,22 +1,15 @@
 package workshop.oop.drive.insurance;
 
-public class VipDiscountOCOperation implements OCOperation {
-    public int percentDiscount;
+public class VipDiscountOCOperation extends AbstractDiscountWithConditionOCOperation
+        implements OCOperation {
 
     public VipDiscountOCOperation(int percentDiscount) {
-        this.percentDiscount = percentDiscount;
+        super(percentDiscount);
     }
 
     @Override
-    public void setInactive() {
-        percentDiscount =0;
+    protected boolean applies(int price, Sex sex) {
+        return price >= 5000;
     }
 
-    @Override
-    public int calculate(int price, Sex sex){
-        if (price < 5000) {
-            return price;
-        }
-        return price - (percentDiscount * price / 100);
-    }
 }

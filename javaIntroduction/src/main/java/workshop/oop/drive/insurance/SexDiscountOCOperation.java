@@ -1,28 +1,17 @@
 package workshop.oop.drive.insurance;
 
-public class SexDiscountOCOperation implements OCOperation {
-    private Sex sex;
-    public int percentDiscount;
+public class SexDiscountOCOperation extends AbstractDiscountWithConditionOCOperation
+        implements OCOperation {
+    private final Sex handledSex;
 
-    public SexDiscountOCOperation(Sex sex, int percentDiscount) {
-        this.sex = sex;
-        this.percentDiscount = percentDiscount;
+    public SexDiscountOCOperation(Sex handledSex, int percentDiscount) {
+        super(percentDiscount);
+        this.handledSex = handledSex;
     }
 
     @Override
-    public void setInactive() {
-        percentDiscount =0;
+    protected boolean applies(int price, Sex sex) {
+        return this.handledSex.equals(sex);
     }
 
-    @Override
-    public int calculate(int price, Sex sex){
-        if(sexMatches(sex)) {
-            return price - percentDiscount * price / 100;
-        }
-        return price;
-    }
-
-    private boolean sexMatches(Sex sex) {
-        return this.sex.equals(sex);
-    }
 }
