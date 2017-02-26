@@ -10,4 +10,9 @@ public class SafetyReport {
     public Set<Object> getThingsToFix() {
         return thingsToFix;
     }
+
+    public void addThingToFix(Object o) {
+        thingsToFix.add(o);
+
+    }
 }
