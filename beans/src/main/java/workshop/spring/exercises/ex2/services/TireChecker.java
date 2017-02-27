@@ -5,9 +5,9 @@ import workshop.spring.exercises.ex2.domain.SafetyReport;
 import workshop.spring.exercises.ex2.domain.Tire;
 
 @Service
-public class TireChecker {
+public class TireChecker implements BusPartChecker<Tire>{
 
-    void check(Tire tire, SafetyReport report){
+    public void check(Tire tire, SafetyReport report){
         if (tire.runnerDepth<5) {
             report.addThingToFix(tire);
         }

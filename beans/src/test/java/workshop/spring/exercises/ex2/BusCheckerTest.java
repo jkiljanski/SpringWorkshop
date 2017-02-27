@@ -22,21 +22,21 @@ public class BusCheckerTest extends AbstractTestNGSpringContextTests {
 
     @Configuration
     @ComponentScan(basePackages = "workshop.spring.exercises.ex2")
-    public static class TestConfig{
+    public static class TestConfig {
     }
 
-        @Autowired
-        BusChecker busChecker;
+    @Autowired
+    BusChecker busChecker;
 
-        @Test
-        void checkNewShinyBus() {
+    @Test
+    void checkNewShinyBus() {
 
-            Bus minibus = createBrandNewBus();
+        Bus minibus = createBrandNewBus();
 
-            SafetyReport safetyReport = busChecker.check(minibus);
-            assertThat(safetyReport.getThingsToFix()).isEmpty();
+        SafetyReport safetyReport = busChecker.check(minibus);
+        assertThat(safetyReport.getThingsToFix()).isEmpty();
 
-        }
+    }
 
     private Bus createBrandNewBus() {
         Bus minibus = new Bus();
