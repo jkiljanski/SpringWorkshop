@@ -10,7 +10,7 @@ import workshop.spring.exercises.ex2.domain.SeatBelt;
 public class SeatChecker implements BusPartChecker<Seat>{
 
     @Autowired
-    SeatBeltChecker seatBeltChecker;
+    BusPartChecker<SeatBelt> seatBeltChecker;
 
     public void check(Seat seat, SafetyReport safetyReport) {
         if (seat.howManyHoles>0){
