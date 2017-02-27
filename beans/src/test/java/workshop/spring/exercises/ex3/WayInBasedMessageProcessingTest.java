@@ -19,7 +19,7 @@ public class WayInBasedMessageProcessingTest extends AbstractTestNGSpringContext
     public static class TestConfig{
     }
 
-    @Autowired(required = false)
+    @Autowired
     MessageReceiver messageReceiver;
 
     public void messageSendFromJMS(){
