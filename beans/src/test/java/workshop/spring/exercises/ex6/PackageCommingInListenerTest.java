@@ -33,6 +33,9 @@ public class PackageCommingInListenerTest extends AbstractTestNGSpringContextTes
     private PackageReceiver packageReceiver;
 
     @Autowired
+    private CounterHolder counterHolder;
+
+    @Autowired
     private CountingPackageObservator countingPackageObservator;
 
     public void shouldPassAndCount7Packages(){
@@ -45,7 +48,7 @@ public class PackageCommingInListenerTest extends AbstractTestNGSpringContextTes
         packageReceiver.receivedPackage(new Package(6, true));
         packageReceiver.receivedPackage(new Package(7, false));
 
-        assertThat(countingPackageObservator.getNumberOfPackages()).isEqualTo(7);
+        assertThat(counterHolder.getCurrentCounter()).isEqualTo(7);
 
         Mockito.verifyNoMoreInteractions(mailSenderMock);
     }
@@ -59,7 +62,8 @@ public class PackageCommingInListenerTest extends AbstractTestNGSpringContextTes
         packageReceiver.receivedPackage(new Package(5, false));
         packageReceiver.receivedPackage(new Package(6, true));
 
-        assertThat(countingPackageObservator.getNumberOfPackages()).isEqualTo(6);
+        assertThat(counterHolder.getCurrentCounter()).isEqualTo(6);
+
         Mockito.verify(mailSenderMock).sendMessageAboutInvalidPackages(Lists.newArrayList(1,2,3,4,6));
     }
 }

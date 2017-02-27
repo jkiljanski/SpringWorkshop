@@ -1,17 +1,21 @@
 package workshop.spring.exercises.ex6;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 @Service
+@Scope("prototype")
 public class CountingPackageObservator implements PackageObservator {
 
-    private int counter;
+    int i =0;
 
-    public int getNumberOfPackages() {
-        return counter;
-    }
+    @Autowired
+    CounterHolder counterHolder;
+
 
     public void notify(Package aPackage) {
-        counter++;
+        i++;
+        counterHolder.setCurrentCounter(i);
     }
 }
