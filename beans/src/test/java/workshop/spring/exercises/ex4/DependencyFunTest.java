@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.Test;
@@ -26,8 +27,10 @@ public class DependencyFunTest extends AbstractTestNGSpringContextTests {
     @ComponentScan(basePackages = "workshop.spring.exercises.ex4")
     public static class TestConfig{
 
+        @Scope("prototype")
         @Bean(name = QualifierNames.FIELD_INJECTION)
         public ActivationNeedingProcessor fieldProcessor(){
+            System.out.println("CREATED FIELD INJECTED BEAN!!!!");
             return new ActivationNeedingProcessor(INJECTED_AS_FIELD);
         }
 
@@ -45,7 +48,7 @@ public class DependencyFunTest extends AbstractTestNGSpringContextTests {
     @Autowired
     private SimpleProcessingMachine simpleProcessingMachine;
 
-    @Autowired (required = false)
+    @Autowired //(required = false)
     private FullyActivatedProcessingMachine fullyActivatedProcessingMachine;
 
     //TODO what if there is no setter dependency?
