@@ -1,5 +1,6 @@
 package workshop.oop.drive;
 
+import org.junit.Test;
 import workshop.oop.drive.cars.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -17,6 +18,7 @@ public class VehicleTripTest {
         assertThat(vehicleTrip.calculateCost(null)).isEqualTo(0);
     }
 
+    @Test
     public void calculateCostOfACarRide(){
         //given
         VehicleTrip vehicleTrip = new VehicleTrip(new Car(), 100);
@@ -29,6 +31,7 @@ public class VehicleTripTest {
         //assertThat(vehicleTrip.calculateCost(null)).isEqualTo(35);
     }
 
+    @Test
     public void calculateCostOfAElectricCarRide(){
         //given
         //TODO: set up engine
