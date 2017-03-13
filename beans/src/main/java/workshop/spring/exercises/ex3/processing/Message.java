@@ -4,12 +4,14 @@ public class Message {
 
     private String processedBy;
 
-    //TODO: Look out this only available inside package
-    void setProcessedBy(String processedBy) {
+    //TODO: Look out: this only available inside package
+    public void setProcessedBy(String processedBy) {
         this.processedBy = processedBy;
     }
 
     public String getProcessedBy() {
         return processedBy;
     }
+
+
 }

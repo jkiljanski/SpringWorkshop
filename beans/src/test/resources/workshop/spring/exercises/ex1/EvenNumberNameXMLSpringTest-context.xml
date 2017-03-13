@@ -4,10 +4,15 @@
 		http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
 
     <bean class="workshop.spring.exercises.ex1.NameGenerator" id="nameGenerator">
-        <property name="counter" ref="nextNumberGiver"></property>
+        <property name="counter">
+            <bean class="workshop.spring.exercises.ex1.EvenNumberGiver">
+                <constructor-arg>
+                    <bean class="workshop.spring.exercises.ex1.NextNumberGiver">
+                    </bean>
+                </constructor-arg>
+            </bean>
+        </property>
     </bean>
-    <bean class="workshop.spring.exercises.ex1.NextNumberGiver" id="nextNumberGiver">
-    </bean>
+
 
 </beans>
-

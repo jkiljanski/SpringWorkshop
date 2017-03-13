@@ -8,4 +8,12 @@ public class Package {
         this.number = number;
         this.isDamaged = isDamaged;
     }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public boolean isDamaged() {
+        return isDamaged;
+    }
 }

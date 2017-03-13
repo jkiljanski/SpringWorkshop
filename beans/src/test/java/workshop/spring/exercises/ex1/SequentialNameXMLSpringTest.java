@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Test
-@ContextConfiguration
+@ContextConfiguration(locations = "classpath:workshop/spring/exercises/ex1/SequentialNameXMLSpringTest-context.xml")
 public class SequentialNameXMLSpringTest extends AbstractTestNGSpringContextTests {
 
     @Autowired

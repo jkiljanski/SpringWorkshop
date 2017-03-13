@@ -24,15 +24,15 @@ public class HerdStamplerTest extends AbstractTestNGSpringContextTests {
 
     public void shouldStampDifferentKindOfAnimals(){
 
-        Cow bigBull = new Cow(Sex.MALE, 500);
-        Cow mediumMilkCow = new Cow(Sex.FEMALE, 300);
-        Cow smallBull = new Cow(Sex.MALE, 80);
-        Cow smallCow = new Cow(Sex.FEMALE, 80);
+        Cow bigBull = new Cow("Byku", Sex.MALE, 500);
+        Cow bigCow = new Cow("Mucka", Sex.FEMALE, 300);
+        Cow smallBull = new Cow("Byczek", Sex.MALE, 80);
+        Cow smallCow = new Cow("Muciusia", Sex.FEMALE, 80);
 
-        herdStampler.stamp(bigBull, mediumMilkCow, smallBull, smallCow);
+        herdStampler.stamp(bigBull, bigCow, smallBull, smallCow);
 
-        assertThat(bigBull.getStamp()).isEqualTo("meat");
-        assertThat(mediumMilkCow.getStamp()).isEqualTo("milk");
+        assertThat(bigBull.getStamp()).isEqualTo("Big male with name: Byku");
+        assertThat(bigCow.getStamp()).isEqualTo("Big female with name: Mucka");
         assertThat(smallBull.getStamp()).isEqualTo("breeding");
         assertThat(smallCow.getStamp()).isEqualTo("breeding");
     }
