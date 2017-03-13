@@ -109,7 +109,18 @@ public class MyListTest {
         assertThat(size).isEqualTo(2);
     }
 
+    @Test(expectedExceptions = IndexOutOfBoundsException.class)
     public void ex8ContainsThreeTypesOfObjects(){
+        //given
+        myList.add(1);
+
+        //when
+        myList.get(100);
+
+        //then
+    }
+
+    public void ex9ContainsThreeTypesOfObjects(){
         //given
         myList.add(1);
         myList.add("second Object");
