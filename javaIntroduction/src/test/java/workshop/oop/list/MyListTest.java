@@ -5,12 +5,14 @@ import com.google.common.collect.Lists;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.Iterator;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Test
 public class MyListTest {
 
-    private MyList myList;
+    private MyArrayList myList;
 
     @BeforeMethod
     public void setUp(){
@@ -19,7 +21,6 @@ public class MyListTest {
 
     public void ex0IsEmpty(){
         //given
-        myList.add("first");
 
         //when
         boolean isEmpty = myList.isEmpty();
@@ -34,9 +35,11 @@ public class MyListTest {
 
         //when
         int size = myList.size();
+        boolean myListEmpty = myList.isEmpty();
 
         //then
         assertThat(size).isEqualTo(1);
+        assertThat(myListEmpty).isFalse();
     }
 
     public void ex2Puts1Gets1(){
@@ -60,7 +63,7 @@ public class MyListTest {
         Object firstItem = myList.get(2);
 
         //then
-        assertThat(firstItem).isEqualTo("aaa");
+        assertThat(firstItem).isEqualTo("ccc");
     }
 
     public void ex4AddsAllAndContains(){
@@ -79,7 +82,7 @@ public class MyListTest {
         myList.addAll(Lists.newArrayList(1,2,3));
 
         //when
-        boolean doesContain4 = myList.contains(3);
+        boolean doesContain4 = myList.contains(4);
 
         //then
         assertThat(doesContain4).isFalse();
@@ -107,6 +110,8 @@ public class MyListTest {
 
         //then
         assertThat(size).isEqualTo(2);
+        assertThat(myList.get(0)).isEqualTo(2);
+        assertThat(myList.get(1)).isEqualTo(3);
     }
 
     @Test(expectedExceptions = IndexOutOfBoundsException.class)
@@ -115,7 +120,7 @@ public class MyListTest {
         myList.add(1);
 
         //when
-        myList.get(100);
+        myList.get(99);
 
         //then
     }
@@ -129,6 +134,31 @@ public class MyListTest {
         //when
 
         //then
-        assertThat(myList).containsExactly(1, "second Object", new Sheep("beee"));
+        assertThat(myList.size()).isEqualTo(3);
+        assertThat(myList.get(0)).isEqualTo(1);
+        assertThat(myList.get(1)).isEqualTo("second Object");
+        assertThat(myList.get(2)).isEqualTo(new Sheep("beee"));
+    }
+
+    public void ex_10ContainsThreeTypesOfObjects(){
+        //given
+        myList.add(1);
+        myList.add("second Object");
+        myList.add(new Sheep("beee"));
+
+        //when
+        Iterator iterator = myList.iterator();
+
+        //then
+        assertThat(iterator.hasNext()).isTrue();
+        assertThat(iterator.next()).isEqualTo(1);
+
+        assertThat(iterator.hasNext()).isTrue();
+        assertThat(iterator.next()).isEqualTo("second Object");
+
+        assertThat(iterator.hasNext()).isTrue();
+        assertThat(iterator.next()).isEqualTo(new Sheep("beee"));
+
+        assertThat(iterator.hasNext()).isFalse();
     }
 }

@@ -1,23 +1,34 @@
 package workshop.oop.list;
 
+import org.apache.commons.lang3.ArrayUtils;
+
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
 public class MyArrayList implements MyList {
+
+    private Object[] array = new Object[100];
+    private int arrayIndex = 0;
+
     @Override
     public int size() {
-        return 0;
+        return arrayIndex;
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return arrayIndex == 0;
     }
 
     @Override
     public boolean contains(Object o) {
+        for (Object o1 : array) {
+            if (o1==o){
+                return true;
+            }
+        }
         return false;
     }
 
@@ -33,7 +44,9 @@ public class MyArrayList implements MyList {
 
     @Override
     public boolean add(Object o) {
-        return false;
+        this.array[arrayIndex] = o;
+        arrayIndex++;
+        return true;
     }
 
     @Override
@@ -43,7 +56,10 @@ public class MyArrayList implements MyList {
 
     @Override
     public boolean addAll(Collection c) {
-        return false;
+        for (Object o : c) {
+            this.add(o);
+        }
+        return true;
     }
 
     @Override
@@ -58,12 +74,13 @@ public class MyArrayList implements MyList {
 
     @Override
     public Object get(int index) {
-        return null;
+        return array[index];
     }
 
     @Override
     public Object set(int index, Object element) {
-        return null;
+        array[ index] = element;
+        return true;
     }
 
     @Override
@@ -73,7 +90,13 @@ public class MyArrayList implements MyList {
 
     @Override
     public Object remove(int index) {
-        return null;
+
+        Object deleted = array[index];
+        array = ArrayUtils.remove(array, index);
+
+        arrayIndex--;
+
+        return deleted;
     }
 
     @Override
