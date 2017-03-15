@@ -9,11 +9,14 @@
 	">
 
 
-    <bean id="xxx" class="workshop.spring.showcase.BeanInitializedInXML">
-        <constructor-arg ref="emailGenerator"/>
-        <property name="description" value="test description"/>
-    </bean>
+	<bean id="dupa" class="workshop.spring.exercises.ex1.NameGenerator">
+		<property name="counter" ref="evenNumberGiver"/>
 
-    <bean id="emailGenerator" class="workshop.spring.showcase.EmailGenerator"/>
+	</bean>
+
+	<bean id="evenNumberGiver" class="workshop.spring.exercises.ex1.EvenNumberGiver">
+
+	</bean>
+
 
 </beans>

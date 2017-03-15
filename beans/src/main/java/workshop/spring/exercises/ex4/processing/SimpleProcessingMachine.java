@@ -19,11 +19,14 @@ public class SimpleProcessingMachine {
     @Autowired
     public SimpleProcessingMachine(@Qualifier(QualifierNames.CONSTRUCTOR_INJECTION) ActivationNeedingProcessor injectedByConstructor) {
         this.injectedByConstructor = injectedByConstructor;
+        injectedByConstructor.activate();
     }
 
     @Autowired
     public void setInjectedBySetter(@Qualifier(QualifierNames.SETTER_INJECTION)ActivationNeedingProcessor injectedBySetter) {
+
         this.injectedBySetter = injectedBySetter;
+        injectedBySetter.activate();
     }
 
     public void processElement(Element element){

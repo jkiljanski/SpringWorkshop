@@ -14,7 +14,7 @@ public class EvenNumberNameXMLSpringTest extends AbstractTestNGSpringContextTest
     @Autowired
     private NameGenerator nameGenerator;
 
-    @Test()
+    @Test
     public void generatesThreeNextEvenNumberNames() {
 
         assertThat(nameGenerator.getNextName()).isEqualTo("customName:2");
