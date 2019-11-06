@@ -7,13 +7,13 @@ import org.junit.jupiter.api.Test;
 
 public class CarTest {
 
-    @Test
-    public void carHasBlueColor(){
+  @Test
+  public void carHasBlueColor() {
 
-        Car car = new Car();
-        car.color = "blue";
-        assertThat(car.color).isEqualTo("Blue");
-    }
+    Car car = new Car();
+    car.color = "blue";
+    assertThat(car.color).isEqualTo("Blue");
+  }
 
 
 }

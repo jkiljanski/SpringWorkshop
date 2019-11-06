@@ -14,35 +14,36 @@ import workshop.spring.exercises.ex3.processing.Message;
 @SpringBootTest
 @ContextConfiguration
 public class WayInBasedMessageProcessingTest {
-    @Configuration
-    @ComponentScan(basePackages = "workshop.spring.exercises.ex3")
-    public static class TestConfig{
-    }
+  @Configuration
+  @ComponentScan(basePackages = "workshop.spring.exercises.ex3")
+  public static class TestConfig {
+  }
 
-    @Autowired(required = false)
-    MessageReceiver messageReceiver;
 
-    @Test
-    public void messageSendFromJMS(){
+  @Autowired(required = false)
+  MessageReceiver messageReceiver;
 
-        Message message = new Message();
-        messageReceiver.receiveFromJMS(message);
-        assertThat(message.getProcessedBy()).isEqualTo("JMS Processor");
-    }
+  @Test
+  public void messageSendFromJMS() {
 
-    @Test
-    public void messageSendViaMail(){
+    Message message = new Message();
+    messageReceiver.receiveFromJMS(message);
+    assertThat(message.getProcessedBy()).isEqualTo("JMS Processor");
+  }
 
-        Message message = new Message();
-        messageReceiver.receiveViaMail(message);
-        assertThat(message.getProcessedBy()).isEqualTo("Mail processor");
-    }
+  @Test
+  public void messageSendViaMail() {
 
-    @Test
-    public void messageSendFromWS(){
+    Message message = new Message();
+    messageReceiver.receiveViaMail(message);
+    assertThat(message.getProcessedBy()).isEqualTo("Mail processor");
+  }
 
-        Message message = new Message();
-        messageReceiver.receiveFromWS(message);
-        assertThat(message.getProcessedBy()).isEqualTo("WS processor");
-    }
+  @Test
+  public void messageSendFromWS() {
+
+    Message message = new Message();
+    messageReceiver.receiveFromWS(message);
+    assertThat(message.getProcessedBy()).isEqualTo("WS processor");
+  }
 }

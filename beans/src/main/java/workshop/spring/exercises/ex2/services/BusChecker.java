@@ -5,8 +5,8 @@ import workshop.spring.exercises.ex2.domain.SafetyReport;
 
 public class BusChecker {
 
-    public SafetyReport check(Bus bus){
+  public SafetyReport check(Bus bus) {
 
-        return null;
-    }
+    return null;
+  }
 }

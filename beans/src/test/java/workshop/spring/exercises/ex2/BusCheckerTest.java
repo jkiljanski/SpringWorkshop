@@ -1,5 +1,7 @@
 package workshop.spring.exercises.ex2;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import com.google.common.collect.Lists;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +9,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.ContextConfiguration;
-
 import workshop.spring.exercises.ex2.domain.Bus;
 import workshop.spring.exercises.ex2.domain.Engine;
 import workshop.spring.exercises.ex2.domain.SafetyReport;
@@ -15,69 +16,69 @@ import workshop.spring.exercises.ex2.domain.Seat;
 import workshop.spring.exercises.ex2.domain.Tire;
 import workshop.spring.exercises.ex2.services.BusChecker;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 @SpringBootTest
 @ContextConfiguration
-public class BusCheckerTest  {
+public class BusCheckerTest {
 
-    @Configuration
-    @ComponentScan(basePackages = "workshop.spring.exercises.ex2")
-    public static class TestConfig{
-    }
+  @Configuration
+  @ComponentScan(basePackages = "workshop.spring.exercises.ex2")
+  public static class TestConfig {
+  }
 
-        @Autowired
-        BusChecker busChecker;
 
-        @Test
-        void checkNewShinyBus() {
+  @Autowired
+  BusChecker busChecker;
 
-            Bus minibus = createBrandNewBus();
+  @Test
+  void checkNewShinyBus() {
 
-            SafetyReport safetyReport = busChecker.check(minibus);
-            assertThat(safetyReport.getThingsToFix()).isEmpty();
+    Bus minibus = createBrandNewBus();
 
-        }
+    SafetyReport safetyReport = busChecker.check(minibus);
+    assertThat(safetyReport.getThingsToFix()).isEmpty();
 
-    private Bus createBrandNewBus() {
-        Bus minibus = new Bus();
-        minibus.age = 1;
-        minibus.engine = new Engine();
-        minibus.engine.condition = Engine.Condition.GOOD;
-        minibus.tires = Lists.newArrayList(
-                new Tire(),
-                new Tire(),
-                new Tire(),
-                new Tire()
-        );
-        minibus.seats = Lists.newArrayList(
-                new Seat(),
-                new Seat(),
-                new Seat(),
-                new Seat(),
-                new Seat()
-        );
-        return minibus;
-    }
+  }
 
-    @Test
-    void checkOldBrokenBus() {
+  private Bus createBrandNewBus() {
 
-        Bus minibus = createBrandNewBus();
-        minibus.age = 15;
-        minibus.engine.condition = Engine.Condition.BAD;
-        minibus.tires.get(2).runnerDepth = 3;
-        minibus.seats.get(1).howManyHoles = 2;
-        minibus.seats.get(3).seatBelt.doItWork = false;
+    Bus minibus = new Bus();
+    minibus.age = 1;
+    minibus.engine = new Engine();
+    minibus.engine.condition = Engine.Condition.GOOD;
+    minibus.tires = Lists.newArrayList(
+        new Tire(),
+        new Tire(),
+        new Tire(),
+        new Tire()
+    );
+    minibus.seats = Lists.newArrayList(
+        new Seat(),
+        new Seat(),
+        new Seat(),
+        new Seat(),
+        new Seat()
+    );
+    return minibus;
+  }
 
-        SafetyReport safetyReport = busChecker.check(minibus);
-        assertThat(safetyReport.getThingsToFix()).containsExactlyInAnyOrder(
-                minibus,
-                minibus.engine,
-                minibus.tires.get(2),
-                minibus.seats.get(1),
-                minibus.seats.get(3).seatBelt
-        );
-    }
+  @Test
+  void checkOldBrokenBus() {
+
+    Bus minibus = createBrandNewBus();
+    minibus.age = 15;
+    minibus.engine.condition = Engine.Condition.BAD;
+    minibus.tires.get(2).runnerDepth = 3;
+    minibus.seats.get(1).howManyHoles = 2;
+    minibus.seats.get(3).seatBelt.doItWork = false;
+
+    SafetyReport safetyReport = busChecker.check(minibus);
+    assertThat(safetyReport.getThingsToFix()).containsExactlyInAnyOrder(
+        minibus,
+        minibus.engine,
+        minibus.tires.get(2),
+        minibus.seats.get(1),
+        minibus.seats.get(3).seatBelt
+    );
+  }
 
 }

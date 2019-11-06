@@ -4,5 +4,5 @@ import javax.validation.constraints.NotNull;
 
 public interface CustomerRepositoryCustom {
 
-    public void doSomethingWithExistingTransaction(@NotNull String key);
+  void doSomethingWithExistingTransaction(@NotNull String key);
 }

@@ -9,27 +9,31 @@ import workshop.spring.exercises.ex4.QualifierNames;
 @Component
 public class SimpleProcessingMachine {
 
-    @Autowired
-    @Qualifier(QualifierNames.FIELD_INJECTION)
-    private ActivationNeedingProcessor fieldInjected;
+  @Autowired
+  @Qualifier(QualifierNames.FIELD_INJECTION)
+  private ActivationNeedingProcessor fieldInjected;
 
-    private final ActivationNeedingProcessor injectedByConstructor;
-    private ActivationNeedingProcessor injectedBySetter;
+  private final ActivationNeedingProcessor injectedByConstructor;
+  private ActivationNeedingProcessor injectedBySetter;
 
-    @Autowired
-    public SimpleProcessingMachine(@Qualifier(QualifierNames.CONSTRUCTOR_INJECTION) ActivationNeedingProcessor injectedByConstructor) {
-        this.injectedByConstructor = injectedByConstructor;
-    }
+  @Autowired
+  public SimpleProcessingMachine(@Qualifier(QualifierNames.CONSTRUCTOR_INJECTION)
+      ActivationNeedingProcessor injectedByConstructor) {
 
-    @Autowired
-    public void setInjectedBySetter(@Qualifier(QualifierNames.SETTER_INJECTION)ActivationNeedingProcessor injectedBySetter) {
-        this.injectedBySetter = injectedBySetter;
-    }
+    this.injectedByConstructor = injectedByConstructor;
+  }
 
-    public void processElement(Element element){
+  @Autowired
+  public void setInjectedBySetter(
+      @Qualifier(QualifierNames.SETTER_INJECTION) ActivationNeedingProcessor injectedBySetter) {
 
-        fieldInjected.processElement(element);
-        injectedByConstructor.processElement(element);
-        injectedBySetter.processElement(element);
-    }
+    this.injectedBySetter = injectedBySetter;
+  }
+
+  public void processElement(Element element) {
+
+    fieldInjected.processElement(element);
+    injectedByConstructor.processElement(element);
+    injectedBySetter.processElement(element);
+  }
 }

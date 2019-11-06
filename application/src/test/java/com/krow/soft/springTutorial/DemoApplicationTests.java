@@ -8,8 +8,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 @ContextConfiguration
 public class DemoApplicationTests {
 
-	@Test
-	public void contextLoads() {
-	}
+  @Test
+  public void contextLoads() {
+
+  }
 
 }

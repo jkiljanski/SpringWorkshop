@@ -1,6 +1,7 @@
 package workshop.oop.list;
 
 public class Sheep {
-    public Sheep(String beee) {
-    }
+  public Sheep(String beee) {
+
+  }
 }

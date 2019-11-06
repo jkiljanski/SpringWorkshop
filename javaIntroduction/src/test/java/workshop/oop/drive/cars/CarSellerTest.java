@@ -1,67 +1,66 @@
 package workshop.oop.drive.cars;
 
-import com.google.common.collect.Lists;
+import static org.assertj.core.api.Assertions.assertThat;
 
+import com.google.common.collect.Lists;
 import java.util.ArrayList;
 import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 
 public class CarSellerTest {
 
-    CarSeller carSeller = new CarSeller();
+  CarSeller carSeller = new CarSeller();
 
-    @Test
-    public void describesSingleCar(){
-        //given
-        Car car = new Car();
-        car.carType = CarType.SEDAN;
-        car.color = "blue";
+  @Test
+  public void describesSingleCar() {
+    //given
+    Car car = new Car();
+    car.carType = CarType.SEDAN;
+    car.color = "blue";
 
-        //when
-        String description = carSeller.describeMeThisCar(car);
+    //when
+    String description = carSeller.describeMeThisCar(car);
 
-        //then
-        assertThat(description).isEqualTo("Car#1 is a blue sedan");
-    }
+    //then
+    assertThat(description).isEqualTo("Car#1 is a blue sedan");
+  }
 
-    @Test
-    public void describeCoupleOfCars(){
-        //given
-        Car car1 = new Car();
-        car1.carType = CarType.SEDAN;
-        car1.color = "blue";
+  @Test
+  public void describeCoupleOfCars() {
+    //given
+    Car car1 = new Car();
+    car1.carType = CarType.SEDAN;
+    car1.color = "blue";
 
-        Car car2 = new Car();
-        car2.carType = CarType.COMBI;
-        car2.color = "black";
-
-
-        //when
-        String description = carSeller.describeMeThisCar(car1/*, car2*/);
-
-        //then
-        assertThat(description).isEqualTo("Car#1 is a blue sedan, Car#2 is a black combi");
-    }
-
-    @Test
-    public void describeCoupleOfCarsAsList(){
-        //given
-        Car car1 = new Car();
-        car1.carType = CarType.SEDAN;
-        car1.color = "blue";
-
-        Car car2 = new Car();
-        car2.carType = CarType.COMBI;
-        car2.color = "black";
+    Car car2 = new Car();
+    car2.carType = CarType.COMBI;
+    car2.color = "black";
 
 
-        //when
-        ArrayList<Car> objects = Lists.newArrayList(car1, car2);
-        String description = carSeller.describeMeThisCar(null);
+    //when
+    String description = carSeller.describeMeThisCar(car1/*, car2*/);
 
-        //then
-        assertThat(description).isEqualTo("Car#1 is a blue sedan, Car#2 is a black combi");
-    }
+    //then
+    assertThat(description).isEqualTo("Car#1 is a blue sedan, Car#2 is a black combi");
+  }
+
+  @Test
+  public void describeCoupleOfCarsAsList() {
+    //given
+    Car car1 = new Car();
+    car1.carType = CarType.SEDAN;
+    car1.color = "blue";
+
+    Car car2 = new Car();
+    car2.carType = CarType.COMBI;
+    car2.color = "black";
+
+
+    //when
+    ArrayList<Car> objects = Lists.newArrayList(car1, car2);
+    String description = carSeller.describeMeThisCar(null);
+
+    //then
+    assertThat(description).isEqualTo("Car#1 is a blue sedan, Car#2 is a black combi");
+  }
 }
