@@ -1,18 +1,19 @@
 package workshop.spring.exercises.ex6;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import com.google.common.collect.Lists;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.ContextConfiguration;
-import org.testng.annotations.Test;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 //TODO: One listener should be sending emails on too many packages damaged
-@Test
+@SpringBootTest
 @ContextConfiguration
 public class PackageCommingInListenerTest {
     @Configuration
@@ -34,7 +35,9 @@ public class PackageCommingInListenerTest {
     @Autowired(required = false)
     private CountingPackageObservator countingPackageObservator;
 
+    @Test
     public void shouldPassAndCount7Packages(){
+
         packageReceiver.receivedPackage(new Package(1, false));
         packageReceiver.receivedPackage(new Package(2, true));
         packageReceiver.receivedPackage(new Package(3, false));
@@ -48,7 +51,9 @@ public class PackageCommingInListenerTest {
         Mockito.verifyNoMoreInteractions(mailSenderMock);
     }
 
+    @Test
     public void shouldStopAt5thPackageDamaged(){
+
         packageReceiver.receivedPackage(new Package(1, true));
         packageReceiver.receivedPackage(new Package(2, true));
         packageReceiver.receivedPackage(new Package(3, true));

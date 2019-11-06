@@ -14,7 +14,7 @@ public class CustomerService {
     }
 
     public Iterable<Customer> findAll(){
-        customerRepository.doSomethingWithExistingTransaction();
+        customerRepository.doSomethingWithExistingTransaction(null);
         return customerRepository.findAll();
     }
 

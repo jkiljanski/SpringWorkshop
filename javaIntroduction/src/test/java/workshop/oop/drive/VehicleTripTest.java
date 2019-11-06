@@ -1,12 +1,13 @@
 package workshop.oop.drive;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import workshop.oop.drive.cars.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class VehicleTripTest {
 
+    @Test
     public void calculateCostOfRidingBike(){
         //given
         VehicleTrip vehicleTrip = new VehicleTrip(new Bike(), 100);

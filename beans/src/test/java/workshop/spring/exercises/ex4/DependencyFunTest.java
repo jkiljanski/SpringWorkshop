@@ -1,12 +1,13 @@
 package workshop.spring.exercises.ex4;
 
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
-import org.testng.annotations.Test;
+
 import workshop.spring.exercises.ex4.processing.ActivationNeedingProcessor;
 import workshop.spring.exercises.ex4.processing.FullyActivatedProcessingMachine;
 import workshop.spring.exercises.ex4.processing.SimpleProcessingMachine;
@@ -14,9 +15,9 @@ import workshop.spring.exercises.ex4.processing.SimpleProcessingMachine;
 import static org.assertj.core.api.Assertions.assertThat;
 
 //TODO: every dependency needs activation
-@Test
+@SpringBootTest
 @ContextConfiguration
-public class DependencyFunTest extends AbstractTestNGSpringContextTests {
+public class DependencyFunTest  {
 
     private static final String INJECTED_AS_FIELD = "injected as field";
     private static final String INJECTED_IN_CONSTRUCTOR = "injected in constructor";
@@ -50,6 +51,7 @@ public class DependencyFunTest extends AbstractTestNGSpringContextTests {
 
     //TODO what if there is no setter dependency?
     //TODO check what @Required will do
+    @Test
     public void processElementBySimpleMachine(){
         Element element = new Element();
         simpleProcessingMachine.processElement(element);
@@ -57,6 +59,7 @@ public class DependencyFunTest extends AbstractTestNGSpringContextTests {
         assertThat(element.getProcessedBy()).containsExactly(INJECTED_IN_CONSTRUCTOR, INJECTED_IN_SETTER);
     }
 
+    @Test
     public void processElementByFullyActivatedSimpleMachine(){
         Element element = new Element();
         fullyActivatedProcessingMachine.processElement(element);

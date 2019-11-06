@@ -1,9 +1,9 @@
 package workshop.oop.drive.cars;
 
 import com.google.common.collect.Lists;
-import org.junit.Test;
 
 import java.util.ArrayList;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

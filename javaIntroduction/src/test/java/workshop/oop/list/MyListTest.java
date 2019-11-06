@@ -2,21 +2,22 @@ package workshop.oop.list;
 
 
 import com.google.common.collect.Lists;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@Test
 public class MyListTest {
 
     private MyList myList;
 
-    @BeforeMethod
+    @BeforeEach
     public void setUp(){
         myList = new MyArrayList();
     }
 
+    @Test
     public void ex0IsEmpty(){
         //given
         myList.add("first");
@@ -28,6 +29,7 @@ public class MyListTest {
         assertThat(isEmpty).isTrue();
     }
 
+    @Test
     public void ex1Puts1Has1(){
         //given
         myList.add("first");
@@ -39,6 +41,7 @@ public class MyListTest {
         assertThat(size).isEqualTo(1);
     }
 
+    @Test
     public void ex2Puts1Gets1(){
         //given
         myList.add("first");
@@ -50,6 +53,7 @@ public class MyListTest {
         assertThat(firstItem).isEqualTo("first");
     }
 
+    @Test
     public void ex3Puts3GetsLast(){
         //given
         myList.add("aaa");
@@ -63,6 +67,7 @@ public class MyListTest {
         assertThat(firstItem).isEqualTo("aaa");
     }
 
+    @Test
     public void ex4AddsAllAndContains(){
         //given
         myList.addAll(Lists.newArrayList(1,2,3));
@@ -74,6 +79,7 @@ public class MyListTest {
         assertThat(doesContain3).isTrue();
     }
 
+    @Test
     public void ex5AddsAllAndDoesntContain(){
         //given
         myList.addAll(Lists.newArrayList(1,2,3));
@@ -85,6 +91,7 @@ public class MyListTest {
         assertThat(doesContain4).isFalse();
     }
 
+    @Test
     public void ex6ReplaceSecondPosition(){
         //given
         myList.addAll(Lists.newArrayList(1,2,3));
@@ -97,6 +104,7 @@ public class MyListTest {
         assertThat(second).isEqualTo(-2);
     }
 
+    @Test
     public void ex7DeleteFirst(){
         //given
         myList.addAll(Lists.newArrayList(1,2,3));
@@ -109,17 +117,18 @@ public class MyListTest {
         assertThat(size).isEqualTo(2);
     }
 
-    @Test(expectedExceptions = IndexOutOfBoundsException.class)
+    @Test
     public void ex8ContainsThreeTypesOfObjects(){
         //given
         myList.add(1);
 
         //when
-        myList.get(100);
+        Assertions.assertThrows(IndexOutOfBoundsException.class, () -> myList.get(100));
 
         //then
     }
 
+    @Test
     public void ex9ContainsThreeTypesOfObjects(){
         //given
         myList.add(1);

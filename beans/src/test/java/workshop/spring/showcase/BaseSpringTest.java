@@ -1,17 +1,21 @@
 package workshop.spring.showcase;
 
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
-import org.testng.annotations.Test;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+
+
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@Test
-@ContextConfiguration
-public class BaseSpringTest extends AbstractTestNGSpringContextTests {
+@ExtendWith(SpringExtension.class)
+//@ContextConfiguration
+public class BaseSpringTest  {
 
     @Configuration
     @ComponentScan(basePackages = "workshop.spring.showcase")
@@ -21,7 +25,7 @@ public class BaseSpringTest extends AbstractTestNGSpringContextTests {
         @Autowired
         EmailGenerator emailGenerator;
 
-        @Test()
+        @Test
         void testEmailGenerator() {
 
             String email = emailGenerator.generate();

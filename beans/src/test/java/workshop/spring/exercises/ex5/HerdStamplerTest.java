@@ -1,18 +1,19 @@
 package workshop.spring.exercises.ex5;
 
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
-import org.testng.annotations.Test;
+
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 //TODO: strategy should be chosen based on single animal
-@Test
+@SpringBootTest
 @ContextConfiguration
-public class HerdStamplerTest extends AbstractTestNGSpringContextTests {
+public class HerdStamplerTest  {
 
     @Configuration
     @ComponentScan(basePackages = "workshop.spring.exercises.ex5")
@@ -22,6 +23,7 @@ public class HerdStamplerTest extends AbstractTestNGSpringContextTests {
     @Autowired(required = false)
     private HerdStampler herdStampler;
 
+    @Test
     public void shouldStampDifferentKindOfAnimals(){
 
         Cow bigBull = new Cow(Sex.MALE, 500);

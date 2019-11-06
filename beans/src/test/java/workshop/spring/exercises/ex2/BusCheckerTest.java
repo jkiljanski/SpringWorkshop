@@ -1,12 +1,13 @@
 package workshop.spring.exercises.ex2;
 
 import com.google.common.collect.Lists;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
-import org.testng.annotations.Test;
+
 import workshop.spring.exercises.ex2.domain.Bus;
 import workshop.spring.exercises.ex2.domain.Engine;
 import workshop.spring.exercises.ex2.domain.SafetyReport;
@@ -16,9 +17,9 @@ import workshop.spring.exercises.ex2.services.BusChecker;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@Test
-@ContextConfiguration(classes = BusCheckerTest.TestConfig.class)
-public class BusCheckerTest extends AbstractTestNGSpringContextTests {
+@SpringBootTest
+@ContextConfiguration
+public class BusCheckerTest  {
 
     @Configuration
     @ComponentScan(basePackages = "workshop.spring.exercises.ex2")

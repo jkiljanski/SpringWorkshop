@@ -2,6 +2,7 @@ package com.krow.soft.springTutorial;
 
 import com.krow.soft.springTutorial.jpa.Customer;
 import com.krow.soft.springTutorial.jpa.CustomerRepository;
+import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -36,8 +37,8 @@ public class DatabaseFiller {
                 log.info("");
 
                 // fetch an individual customer by ID
-                Customer customer = repository.findOne(1L);
-                log.info("Customer found with findOne(1L):");
+                Optional<Customer> customer = repository.findById(1L);
+                log.info("Customer found with findById(1L):");
                 log.info("--------------------------------");
                 log.info(customer.toString());
                 log.info("");
