@@ -18,7 +18,6 @@ public class BaseXMLBasedSpringTest extends AbstractTestNGSpringContextTests {
         void wrapperWrapsEmail() {
 
             String email = beanInitializedInXML.generate();
-            System.out.println(email);
 
             assertThat(email)
                     .isNotNull()

@@ -3,14 +3,18 @@ package workshop.spring.exercises.ex1;
 public class NameGenerator {
 
     private SequentialNameGiver counter;
-    private String prefix = "customName:";
-    private int i = 1;
 
+    private String prefix = "customName:";
     public String getNextName() {
-        return prefix + i++;
+        return prefix + counter.getNexNumber();
     }
+
 
     public void setPrefix(String prefix) {
         this.prefix = prefix;
+    }
+
+    public void setCounter(SequentialNameGiver counter) {
+        this.counter = counter;
     }
 }

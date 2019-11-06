@@ -11,25 +11,25 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @Test
 @ContextConfiguration
-public class BaseSpringTest extends AbstractTestNGSpringContextTests {
+public class AnnotationBasedSpringTest extends AbstractTestNGSpringContextTests {
 
     @Configuration
     @ComponentScan(basePackages = "workshop.spring.showcase")
-    public static class TestConfig{
+    public static class TestConfig {
     }
 
-        @Autowired
-        EmailGenerator emailGenerator;
+    @Autowired
+    EmailGenerator emailGenerator;
 
-        @Test()
-        void testEmailGenerator() {
+    @Test()
+    void testEmailGenerator() {
 
-            String email = emailGenerator.generate();
-            System.out.println(email);
+        String email = emailGenerator.generate();
+        System.out.println(email);
 
-            assertThat(email).isNotNull().isEqualTo("feedback@yoursite.com");
+        assertThat(email).isNotNull().isEqualTo("feedback@yoursite.com");
 
 
-        }
+    }
 
 }

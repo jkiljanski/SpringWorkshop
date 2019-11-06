@@ -35,4 +35,12 @@ public class Customer {
     public String getLastName() {
         return lastName;
     }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void clearId() {
+        this.id = null;
+    }
 }

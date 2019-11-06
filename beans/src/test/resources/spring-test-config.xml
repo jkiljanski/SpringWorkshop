@@ -9,7 +9,7 @@
 	">
 
 
-    <bean id="otherBean" class="workshop.spring.showcase.BeanInitializedInXML">
+    <bean id="xxx" class="workshop.spring.showcase.BeanInitializedInXML">
         <constructor-arg ref="emailGenerator"/>
         <property name="description" value="test description"/>
     </bean>

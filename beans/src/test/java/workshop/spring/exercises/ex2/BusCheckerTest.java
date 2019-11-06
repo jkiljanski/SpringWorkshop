@@ -34,8 +34,8 @@ public class BusCheckerTest extends AbstractTestNGSpringContextTests {
             Bus minibus = createBrandNewBus();
 
             SafetyReport safetyReport = busChecker.check(minibus);
-            assertThat(safetyReport.getThingsToFix()).isEmpty();
 
+            assertThat(safetyReport.getThingsToFix()).isEmpty();
         }
 
     private Bus createBrandNewBus() {
@@ -70,6 +70,7 @@ public class BusCheckerTest extends AbstractTestNGSpringContextTests {
         minibus.seats.get(3).seatBelt.doItWork = false;
 
         SafetyReport safetyReport = busChecker.check(minibus);
+
         assertThat(safetyReport.getThingsToFix()).containsExactlyInAnyOrder(
                 minibus,
                 minibus.engine,

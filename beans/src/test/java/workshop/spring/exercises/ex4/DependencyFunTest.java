@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.annotations.Test;
@@ -27,6 +28,7 @@ public class DependencyFunTest extends AbstractTestNGSpringContextTests {
     public static class TestConfig{
 
         @Bean(name = QualifierNames.FIELD_INJECTION)
+        @Scope("prototype")
         public ActivationNeedingProcessor fieldProcessor(){
             return new ActivationNeedingProcessor(INJECTED_AS_FIELD);
         }

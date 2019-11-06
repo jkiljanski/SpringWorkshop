@@ -33,7 +33,6 @@ public class WayInBasedMessageProcessingTest extends AbstractTestNGSpringContext
         messageReceiver.receiveViaMail(message);
         assertThat(message.getProcessedBy()).isEqualTo("Mail processor");
     }
-
     public void messageSendFromWS(){
         Message message = new Message();
         messageReceiver.receiveFromWS(message);
