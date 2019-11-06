@@ -1,24 +1,28 @@
 package workshop.oop.drive.insurance;
 
 public class OCInsurance {
-  public OCInsurance(int price) {
+  private final Sex sex;
+  private final int initialPrice;
 
+  private DiscountHistory discountHistory = new DiscountHistory();
+
+  public OCInsurance(final Sex sex, int price) {
+
+    this.sex = sex;
+    this.initialPrice = price;
   }
 
   public int calculateFinalPrice() {
 
-    return 0;
-  }
-
-  public void addAbsoluteDiscount(int i) {
-
-  }
-
-  public void addRelativeDiscount(int i) {
+    DiscountCalculator discountCalculator = new DiscountCalculator(initialPrice, sex);
+    discountHistory.accept(discountCalculator);
+    return discountCalculator.getActualPrice();
 
   }
 
-  public void removeAbsoluteDiscounts() {
+  DiscountHistory getDiscountHistory() {
 
+    return discountHistory;
   }
+
 }
