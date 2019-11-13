@@ -1,8 +1,10 @@
 package workshop.spring.exercises.ex6;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.fail;
 
 import com.google.common.collect.Lists;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +18,13 @@ import org.springframework.test.context.ContextConfiguration;
 @SpringBootTest
 @ContextConfiguration
 public class PackageCommingInListenerTest {
+
+
+
   @Configuration
   @ComponentScan(basePackages = "workshop.spring.exercises.ex6")
   public static class TestConfig {
+
 
     @Bean
     MailSender mailSenderAdapter() {
@@ -26,17 +32,31 @@ public class PackageCommingInListenerTest {
       return Mockito.mock(MailSender.class);
     }
 
+
   }
 
 
   @Autowired
   private MailSender mailSenderMock;
 
-  @Autowired(required = false)
+  @Autowired
   private PackageReceiver packageReceiver;
 
-  @Autowired(required = false)
+  @Autowired
   private CountingPackageObservator countingPackageObservator;
+
+  @Autowired
+  private NotDamagedPackageObservator notDamagedCountingObservator;
+
+  @Autowired
+  private StopOnFailedPackagesObserver stopOnFailedPackagesObserver;
+
+  @BeforeEach
+  public void resetContext() {
+      this.countingPackageObservator.reset();
+      this.notDamagedCountingObservator.reset();
+      this.stopOnFailedPackagesObserver.reset();
+  }
 
   @Test
   public void shouldPassAndCount7Packages() {
@@ -51,7 +71,20 @@ public class PackageCommingInListenerTest {
 
     assertThat(countingPackageObservator.getNumberOfPackages()).isEqualTo(7);
 
-    Mockito.verifyNoMoreInteractions(mailSenderMock);
+  }
+
+  @Test
+  public void shouldCountOnlyDamagedPackages(){
+    packageReceiver.receivedPackage(new Package(1, false));
+    packageReceiver.receivedPackage(new Package(2, true));
+    packageReceiver.receivedPackage(new Package(3, false));
+    packageReceiver.receivedPackage(new Package(4, true));
+    packageReceiver.receivedPackage(new Package(5, false));
+    packageReceiver.receivedPackage(new Package(6, true));
+    packageReceiver.receivedPackage(new Package(7, false));
+
+    assertThat(notDamagedCountingObservator.getNumberOfPackages()).isEqualTo(3);
+
   }
 
   @Test
@@ -61,15 +94,17 @@ public class PackageCommingInListenerTest {
     packageReceiver.receivedPackage(new Package(2, true));
     packageReceiver.receivedPackage(new Package(3, true));
     packageReceiver.receivedPackage(new Package(4, true));
-    packageReceiver.receivedPackage(new Package(5, false));
+    packageReceiver.receivedPackage(new Package(5, true));
     try {
-      packageReceiver.receivedPackage(new Package(6, true));
+      packageReceiver.receivedPackage(new Package(6, false));
+      fail("Should explode");
     } catch (Exception e) {
-      //assertThat(e).isExactlyInstanceOf(TooManyPackagesDamagedException.class);
+      assertThat(e).isExactlyInstanceOf(TooManyPackagesDamagedException.class);
     }
 
-    assertThat(countingPackageObservator.getNumberOfPackages()).isEqualTo(7);
-    Mockito.verify(mailSenderMock)
-        .sendMessageAboutInvalidPackages(Lists.newArrayList(1, 2, 3, 4, 6));
+    assertThat(countingPackageObservator.getNumberOfPackages()).isEqualTo(5);
+
+    /*Mockito.verify(mailSenderMock)
+        .sendMessageAboutInvalidPackages(Lists.newArrayList(1, 2, 3, 4, 6));*/
   }
 }

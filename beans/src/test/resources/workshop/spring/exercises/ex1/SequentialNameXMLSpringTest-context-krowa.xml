@@ -3,5 +3,5 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 		http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
 
-
+	<bean class="workshop.spring.exercises.ex1.NameGenerator" name="nameGenerator"/>
 </beans>

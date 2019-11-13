@@ -27,19 +27,19 @@ public class DependencyFunTest {
   @ComponentScan(basePackages = "workshop.spring.exercises.ex4")
   public static class TestConfig {
 
-    @Bean(name = QualifierNames.FIELD_INJECTION)
+    @Bean(name = QualifierNames.A)
     public ActivationNeedingProcessor fieldProcessor() {
 
       return new ActivationNeedingProcessor(INJECTED_AS_FIELD);
     }
 
-    @Bean(name = QualifierNames.CONSTRUCTOR_INJECTION)
+    @Bean(name = QualifierNames.B)
     public ActivationNeedingProcessor constructorProcessor() {
 
       return new ActivationNeedingProcessor(INJECTED_IN_CONSTRUCTOR);
     }
 
-    @Bean(name = QualifierNames.SETTER_INJECTION)
+    @Bean(name = QualifierNames.C)
     public ActivationNeedingProcessor setterProcessor() {
 
       return new ActivationNeedingProcessor(INJECTED_IN_SETTER);

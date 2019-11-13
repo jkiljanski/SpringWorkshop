@@ -12,7 +12,6 @@ public class ActivationNeedingProcessor {
   }
 
   public void processElement(Element element) {
-
     if (activated) {
       element.wasProcessedBy(id);
     }

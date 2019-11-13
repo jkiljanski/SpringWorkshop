@@ -10,14 +10,14 @@ import workshop.spring.exercises.ex4.QualifierNames;
 public class SimpleProcessingMachine {
 
   @Autowired
-  @Qualifier(QualifierNames.FIELD_INJECTION)
+  @Qualifier(QualifierNames.A)
   private ActivationNeedingProcessor fieldInjected;
 
   private final ActivationNeedingProcessor injectedByConstructor;
   private ActivationNeedingProcessor injectedBySetter;
 
   @Autowired
-  public SimpleProcessingMachine(@Qualifier(QualifierNames.CONSTRUCTOR_INJECTION)
+  public SimpleProcessingMachine(@Qualifier(QualifierNames.B)
       ActivationNeedingProcessor injectedByConstructor) {
 
     this.injectedByConstructor = injectedByConstructor;
@@ -25,7 +25,7 @@ public class SimpleProcessingMachine {
 
   @Autowired
   public void setInjectedBySetter(
-      @Qualifier(QualifierNames.SETTER_INJECTION) ActivationNeedingProcessor injectedBySetter) {
+      @Qualifier(QualifierNames.C) ActivationNeedingProcessor injectedBySetter) {
 
     this.injectedBySetter = injectedBySetter;
   }

@@ -2,7 +2,6 @@ package workshop.spring.exercises.ex1;
 
 import org.springframework.stereotype.Component;
 
-@Component
 public class NameGenerator {
 
   private SequentialNameGiver counter;

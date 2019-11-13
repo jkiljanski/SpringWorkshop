@@ -33,9 +33,9 @@ public class HerdStamplerTest {
 
     herdStampler.stamp(bigBull, mediumMilkCow, smallBull, smallCow);
 
-    assertThat(bigBull.getStamp()).isEqualTo("meat");
-    assertThat(mediumMilkCow.getStamp()).isEqualTo("milk");
-    assertThat(smallBull.getStamp()).isEqualTo("breeding");
-    assertThat(smallCow.getStamp()).isEqualTo("breeding");
+    assertThat(bigBull.getStamp()).isEqualToIgnoringCase("meat");
+    assertThat(mediumMilkCow.getStamp()).isEqualToIgnoringCase("milk");
+    assertThat(smallBull.getStamp()).isEqualToIgnoringCase("breeding");
+    assertThat(smallCow.getStamp()).isEqualToIgnoringCase("breeding");
   }
 }

@@ -9,4 +9,8 @@ public class Package {
     this.number = number;
     this.isDamaged = isDamaged;
   }
+
+  boolean isDamaged() {
+    return isDamaged;
+  }
 }

@@ -1,40 +1,31 @@
-package workshop.spring.showcase;
+package workshop.spring.exercises.ex1;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ExtendWith(SpringExtension.class)
-public class BaseSpringTest {
-
-  @Configuration
-  //@ComponentScan(basePackages = "workshop.spring.showcase")
-  public static class TestConfig {
-    @Bean
-    public EmailGenerator emailGenerator(){
-
-      return new EmailGenerator();
-    }
-  }
-
+public class NextNumberCalculatorTest {
 
   @Autowired
-  EmailGenerator emailGenerator;
+  private NumberSequenceProvider numberSequenceProvider;
+
+
+  @Configuration
+  @ComponentScan(basePackages = "workshop.spring.exercises.ex1")
+  public static class TestConfig {
+  }
 
   @Test
-  void testEmailGenerator() {
+  public void generateListOfNumbers(){
 
-    String email = emailGenerator.generate();
-    System.out.println(email);
-
-    assertThat(email).isNotNull().isEqualTo("feedback@yoursite.com");
-
+    assertThat(numberSequenceProvider.provideSequence(5)).containsExactly(1, 2, 3, 4, 5);
+    assertThat(numberSequenceProvider.provideSequence(3)).containsExactly(1, 2, 3);
 
   }
 
