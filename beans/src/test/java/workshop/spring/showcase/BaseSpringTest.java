@@ -2,8 +2,10 @@ package workshop.spring.showcase;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import org.checkerframework.checker.units.qual.A;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -14,9 +16,9 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 public class BaseSpringTest {
 
   @Configuration
-  //@ComponentScan(basePackages = "workshop.spring.showcase")
+  @ComponentScan(basePackages = "workshop.spring.showcase")
   public static class TestConfig {
-    @Bean
+    //@Bean
     public EmailGenerator emailGenerator(){
 
       return new EmailGenerator();
@@ -27,6 +29,12 @@ public class BaseSpringTest {
   @Autowired
   EmailGenerator emailGenerator;
 
+  @Autowired
+  ObjectFactory<PrototypeBean> prototypeBeanFactory;
+
+  @Autowired
+  PrototypeBean prototypeBean;
+
   @Test
   void testEmailGenerator() {
 
@@ -36,6 +44,13 @@ public class BaseSpringTest {
     assertThat(email).isNotNull().isEqualTo("feedback@yoursite.com");
 
 
+  }
+
+  @Test
+  void injectingPrototype(){
+
+    assertThat(prototypeBeanFactory.getObject()).isNotSameAs(prototypeBeanFactory.getObject());
+    assertThat(prototypeBean).isNotEqualTo(prototypeBean);
   }
 
 }
