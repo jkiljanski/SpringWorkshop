@@ -1,43 +1,51 @@
 package workshop.oop.drive.insurance;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class OCInsurance {
 
   private final int price;
+  private final Sex sex;
 
-  private int discount;
-  private int relativeDiscount;
-  private static final int VIP_THRESHOLD = 6000;
-  private int vipRelativeDiscount;
-
+  List<Discount> discountList = new ArrayList<>();
 
 
   public OCInsurance(int price) {
+    this (Sex.FEMALE, price);
+  }
+
+  public OCInsurance(Sex sex, int price){
+    this.sex = sex;
     this.price = price;
   }
 
 
   public int calculateFinalPrice() {
-    int finalPrice = (price - discount)*(100 - relativeDiscount)/100;
-    if(finalPrice>VIP_THRESHOLD){
-      finalPrice = finalPrice*(100 - vipRelativeDiscount)/100;
+    int temp = price;
+    for (Discount discount : discountList) {
+      temp = discount.recalculatePrice(temp, sex);
     }
-    return finalPrice;
+    return temp;
   }
 
   public void addAbsoluteDiscount(int discount) {
-   // price = price-discount;
-    this.discount+=discount;
+    discountList.add(new AbsoluteDiscount(discount));
   }
 
   public void addRelativeDiscount(int relativeDiscount) {
-    this.relativeDiscount += relativeDiscount;
+    discountList.add(new RelativeDiscount(relativeDiscount));
   }
 
   public void removeAbsoluteDiscounts() {
-    discount = 0;
+    discountList.removeIf(e -> e.getClass() == AbsoluteDiscount.class);
   }
 
   public void addVIPRelativeDiscount(int vipRelativeDiscount) {
-    this.vipRelativeDiscount += vipRelativeDiscount;
+    discountList.add(new VipRelativeDiscount(vipRelativeDiscount));
+  }
+
+  public void addSexDiscount(Sex female, int i) {
+    discountList.add(new SexRelativeDiscount(female, i));
   }
 }

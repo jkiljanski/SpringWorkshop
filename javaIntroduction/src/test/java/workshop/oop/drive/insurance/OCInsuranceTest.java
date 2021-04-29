@@ -107,10 +107,11 @@ public class OCInsuranceTest {
   @Test
   public void addFemaleDiscount() {
     //given
-    OCInsurance ocInsurance = new OCInsurance(/*Sex.FEMALE, */300);
+    OCInsurance ocInsurance = new OCInsurance(Sex.FEMALE, 300);
+
     //when
-    //ocInsurance.addAbsoluteDiscount(20);
-    //ocInsurance.addSexDiscount(Sex.FEMALE, 20); //in percents
+    ocInsurance.addAbsoluteDiscount(20);
+    ocInsurance.addSexDiscount(Sex.FEMALE, 20); //in percents
 
     //then
     assertThat(ocInsurance.calculateFinalPrice()).isEqualTo(224);
@@ -120,10 +121,10 @@ public class OCInsuranceTest {
   @Test
   public void addFemaleDiscountThatDoesntWork() {
     //given
-    OCInsurance ocInsurance = new OCInsurance(/*Sex.MALE,*/ 300);
+    OCInsurance ocInsurance = new OCInsurance(Sex.MALE, 300);
     //when
-    //ocInsurance.addAbsoluteDiscount(20);
-    //ocInsurance.addSexDiscount(Sex.FEMALE, 20);
+    ocInsurance.addAbsoluteDiscount(20);
+    ocInsurance.addSexDiscount(Sex.FEMALE, 20);
 
     //then
     assertThat(ocInsurance.calculateFinalPrice()).isEqualTo(280);
