@@ -3,11 +3,14 @@ package workshop.oop.drive.insurance;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("Counts insurance price")
 public class OCInsuranceTest {
 
   @Test
+  @DisplayName("Standard price")
   public void shouldHaveDefaultInsurance() {
     //given
     OCInsurance ocInsurance = new OCInsurance(300);
@@ -22,7 +25,7 @@ public class OCInsuranceTest {
     //given
     OCInsurance ocInsurance = new OCInsurance(300);
     //when
-    ocInsurance.addAbsoluteDiscount(20);
+    //ocInsurance.addAbsoluteDiscount(20);
 
     //then
     assertThat(ocInsurance.calculateFinalPrice()).isEqualTo(280);
@@ -33,8 +36,8 @@ public class OCInsuranceTest {
     //given
     OCInsurance ocInsurance = new OCInsurance(300);
     //when
-    ocInsurance.addAbsoluteDiscount(20);
-    ocInsurance.addRelativeDiscount(10);
+    //ocInsurance.addAbsoluteDiscount(20);
+    //ocInsurance.addRelativeDiscount(10);
 
     //then
     assertThat(ocInsurance.calculateFinalPrice()).isEqualTo(252);
@@ -45,9 +48,9 @@ public class OCInsuranceTest {
     //given
     OCInsurance ocInsurance = new OCInsurance(300);
     //when
-    ocInsurance.addAbsoluteDiscount(20);
-    ocInsurance.addRelativeDiscount(10);
-    ocInsurance.removeAbsoluteDiscounts();
+    //ocInsurance.addAbsoluteDiscount(20);
+    //ocInsurance.addRelativeDiscount(10);
+    //ocInsurance.removeAbsoluteDiscounts();
 
     //then
     assertThat(ocInsurance.calculateFinalPrice()).isEqualTo(270);
@@ -58,7 +61,7 @@ public class OCInsuranceTest {
     //given
     OCInsurance ocInsurance = new OCInsurance(10000);
     //when
-    ocInsurance.addAbsoluteDiscount(1000);
+    //ocInsurance.addAbsoluteDiscount(1000);
     //ocInsurance.addVIPDiscount(50);
 
     //then
@@ -66,11 +69,11 @@ public class OCInsuranceTest {
   }
 
   @Test
-  public void addVipDiscountWhichNotApplies() {
+  public void addVipDiscountWhichDoesntApply() {
     //given
     OCInsurance ocInsurance = new OCInsurance(300);
     //when
-    ocInsurance.addAbsoluteDiscount(1000);
+    //ocInsurance.addAbsoluteDiscount(1000);
     //ocInsurance.addVIPDiscount(50);
 
     //then
@@ -82,8 +85,8 @@ public class OCInsuranceTest {
     //given
     OCInsurance ocInsurance = new OCInsurance(/*Sex.FEMALE, */300);
     //when
-    ocInsurance.addAbsoluteDiscount(20);
-    //ocInsurance.addSexDiscount(Sex.FEMALE, 20);
+    //ocInsurance.addAbsoluteDiscount(20);
+    //ocInsurance.addSexDiscount(Sex.FEMALE, 20); //in percents
 
     //then
     assertThat(ocInsurance.calculateFinalPrice()).isEqualTo(224);
@@ -94,7 +97,7 @@ public class OCInsuranceTest {
     //given
     OCInsurance ocInsurance = new OCInsurance(/*Sex.MALE,*/ 300);
     //when
-    ocInsurance.addAbsoluteDiscount(20);
+    //ocInsurance.addAbsoluteDiscount(20);
     //ocInsurance.addSexDiscount(Sex.FEMALE, 20);
 
     //then

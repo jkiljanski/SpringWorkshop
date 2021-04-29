@@ -16,33 +16,33 @@ public class VehicleTripTest {
     vehicleTrip.doTrip();
 
     //then
-    assertThat(vehicleTrip.calculateCost(null)).isEqualTo(0);
+    assertThat(vehicleTrip.calculateCost()).isEqualTo(0);
   }
 
   @Test
   public void calculateCostOfACarRide() {
     //given
-    VehicleTrip vehicleTrip = new VehicleTrip(new Car(), 100);
+    VehicleTrip vehicleTrip = new VehicleTrip(new Car(), 240);
 
     //when
     vehicleTrip.doTrip();
 
     //then
-    //TODO 100km uses 7liters per 5 zlotys each - implement null
-    //assertThat(vehicleTrip.calculateCost(null)).isEqualTo(35);
+    //TODO 100km uses 8liters per 5 zlotys each - implement null
+    //assertThat(vehicleTrip.calculateCost(null)).isEqualTo(96);
   }
 
   @Test
   public void calculateCostOfAElectricCarRide() {
     //given
     //TODO: set up engine
-    VehicleTrip vehicleTrip = new VehicleTrip(new Car(), 100);
+    VehicleTrip vehicleTrip = new VehicleTrip(new Car(), 240);
 
     //when
     vehicleTrip.doTrip();
 
     //then
-    //TODO 100km uses 20kWh per 0,5 zlotys each - implement null
-    assertThat(vehicleTrip.calculateCost(null)).isEqualTo(10);
+    //TODO 100km uses 30kWh per 0,5 zlotys each - implement null
+    assertThat(vehicleTrip.calculateCost()).isEqualTo(36);
   }
 }

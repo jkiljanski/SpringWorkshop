@@ -9,16 +9,4 @@ public class OCInsurance {
 
     return 0;
   }
-
-  public void addAbsoluteDiscount(int i) {
-
-  }
-
-  public void addRelativeDiscount(int i) {
-
-  }
-
-  public void removeAbsoluteDiscounts() {
-
-  }
 }

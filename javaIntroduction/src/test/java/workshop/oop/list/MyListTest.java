@@ -2,11 +2,13 @@ package workshop.oop.list;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.fail;
 
-import com.google.common.collect.Lists;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 public class MyListTest {
 
@@ -15,13 +17,12 @@ public class MyListTest {
   @BeforeEach
   public void setUp() {
 
-    myList = new MyArrayList();
+    myList = new MyLinkedList();
   }
 
   @Test
   public void ex0IsEmpty() {
     //given
-    myList.add("first");
 
     //when
     boolean isEmpty = myList.isEmpty();
@@ -62,16 +63,17 @@ public class MyListTest {
     myList.add("ccc");
 
     //when
-    Object firstItem = myList.get(2);
+    //Object lastItem = myList.getLast();
 
     //then
-    assertThat(firstItem).isEqualTo("aaa");
+    //assertThat(lastItem).isEqualTo("ccc");
+    fail("Not implemented");
   }
 
   @Test
   public void ex4AddsAllAndContains() {
     //given
-    myList.addAll(Lists.newArrayList(1, 2, 3));
+    myList.addAll(List.of(1, 2, 3));
 
     //when
     boolean doesContain3 = myList.contains(3);
@@ -83,10 +85,10 @@ public class MyListTest {
   @Test
   public void ex5AddsAllAndDoesntContain() {
     //given
-    myList.addAll(Lists.newArrayList(1, 2, 3));
+    myList.addAll(List.of(1, 2, 3));
 
     //when
-    boolean doesContain4 = myList.contains(3);
+    boolean doesContain4 = myList.contains(4);
 
     //then
     assertThat(doesContain4).isFalse();
@@ -95,7 +97,7 @@ public class MyListTest {
   @Test
   public void ex6ReplaceSecondPosition() {
     //given
-    myList.addAll(Lists.newArrayList(1, 2, 3));
+    myList.addAll(List.of(1, 2, 3));
 
     //when
     myList.set(1, -2);
@@ -108,7 +110,7 @@ public class MyListTest {
   @Test
   public void ex7DeleteFirst() {
     //given
-    myList.addAll(Lists.newArrayList(1, 2, 3));
+    myList.addAll(List.of(1, 2, 3));
 
     //when
     myList.remove(0);

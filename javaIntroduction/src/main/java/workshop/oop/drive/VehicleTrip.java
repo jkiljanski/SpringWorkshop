@@ -1,6 +1,7 @@
 package workshop.oop.drive;
 
-import com.google.common.base.Function;
+
+import io.vavr.Function1;
 
 public class VehicleTrip {
 
@@ -17,7 +18,7 @@ public class VehicleTrip {
 
   }
 
-  public <F extends FuelType> int calculateCost(Function<F, Integer> costOfFuel) {
+  public int calculateCost() {
 
     return 0;
   }

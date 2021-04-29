@@ -2,7 +2,7 @@ package workshop.oop.drive;
 
 public class VehicleParts {
 
-  public static class Pedal {
+  public static class Brakes {
   }
 
 
@@ -10,7 +10,7 @@ public class VehicleParts {
   }
 
 
-  public static class GasTank {
+  public static class Tires {
 
   }
 }
