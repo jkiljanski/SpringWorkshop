@@ -3,6 +3,7 @@ package workshop.oop.drive.cars;
 
 import io.vavr.collection.Stream;
 
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class CarSeller {
@@ -17,7 +18,12 @@ public class CarSeller {
     }
 
     public String describe(Car... cars) {
-        return Stream.of(cars)
+        return describe(Stream.of(cars));
+
+    }
+
+    private String describe(Stream<Car> carStream) {
+        return carStream
                 .zipWithIndex()
                 .map(carWithIndex -> {
                     Car car = carWithIndex._1;
@@ -26,6 +32,10 @@ public class CarSeller {
                     return createDescription("Car#" + position, car);
                 })
                 .collect(Collectors.joining(", "));
+    }
 
+    public String describe(List<Car> carList) {
+        io.vavr.collection.List<Car> cars = io.vavr.collection.List.ofAll(carList);
+        return describe(cars.toStream());
     }
 }
