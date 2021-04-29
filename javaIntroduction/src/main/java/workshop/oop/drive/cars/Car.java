@@ -8,17 +8,23 @@ public class Car implements Vehicle {
 
   private final CarColour color;
 
-  public CarType carType;
+  private final CarType carType;
 
   public long distanceMeter;
 
   VehicleParts.SteeringWheel steeringWheel;
 
   public Car(CarColour carColour) {
-    color = carColour;
+    this(carColour, CarType.SEDAN);
   }
   public Car() {
     this(CarColour.WHITE);
+
+  }
+
+  public Car(CarColour colour , CarType carType) {
+    color = colour;
+    this.carType = carType;
   }
 
   @Override
@@ -28,5 +34,9 @@ public class Car implements Vehicle {
 
   public String describeColor() {
     return color.getDescription();
+  }
+
+  public String describeType() {
+    return carType.name().toLowerCase();
   }
 }
