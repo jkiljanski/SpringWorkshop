@@ -11,6 +11,27 @@
     <name>demo</name>
     <description>Demo project for Spring Boot</description>
 
+    <repositories>
+        <repository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>central</id>
+            <name>pzu</name>
+            <url>https://repo.pzu.pl/repository/public-maven-all</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>central</id>
+            <name>bintray-plugins</name>
+            <url>https://repo.pzu.pl/repository/public-maven-all</url>
+        </pluginRepository>
+    </pluginRepositories>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>

@@ -37,8 +37,7 @@ public class VehiclePark {
 
   public static void main(String[] args) {
 
-    Car car = new Car();
-    car.color = "RED";
+    Car car = new Car(CarColour.BLUE);
 
     VehiclePark vehiclePark = new VehiclePark();
 

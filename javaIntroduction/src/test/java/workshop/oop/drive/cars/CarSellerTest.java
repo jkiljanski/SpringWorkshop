@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import workshop.oop.drive.CarColour;
 
 
 public class CarSellerTest {
@@ -14,9 +15,8 @@ public class CarSellerTest {
   @Test
   public void describesSingleCar() {
     //given
-    Car car = new Car();
+    Car car = new Car(CarColour.BLUE);
     car.carType = CarType.SEDAN;
-    car.color = "blue";
 
     //when
     String description = carSeller.describe(car);
@@ -28,13 +28,11 @@ public class CarSellerTest {
   @Test
   public void describeCoupleOfCars() {
     //given
-    Car car1 = new Car();
+    Car car1 = new Car(CarColour.BLUE);
     car1.carType = CarType.SEDAN;
-    car1.color = "blue";
 
-    Car car2 = new Car();
+    Car car2 = new Car(CarColour.BLACK);
     car2.carType = CarType.COMBI;
-    car2.color = "black";
 
 
     //when
@@ -47,13 +45,11 @@ public class CarSellerTest {
   @Test
   public void describeCoupleOfCarsAsList() {
     //given
-    Car car1 = new Car();
+    Car car1 = new Car(CarColour.BLUE);
     car1.carType = CarType.SEDAN;
-    car1.color = "blue";
 
-    Car car2 = new Car();
+    Car car2 = new Car(CarColour.BLACK);
     car2.carType = CarType.COMBI;
-    car2.color = "black";
 
 
     //when
@@ -67,9 +63,8 @@ public class CarSellerTest {
   @Test
   public void describeACarWithDetails() {
     //given
-    Car car = new Car(); //add steering wheel,
+    Car car = new Car(CarColour.BLUE); //add steering wheel,
     car.carType = CarType.SEDAN;
-    car.color = "blue";
 
     //when
     List<Car> objects = List.of(car);
