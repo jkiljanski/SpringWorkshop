@@ -21,7 +21,7 @@ public class VehicleTripTest {
     vehicleTrip.doTrip();
 
     //then
-    assertThat(vehicleTrip.calculateCost()).isEqualTo(0);
+    assertThat(vehicleTrip.calculateCost()).isEqualTo(0f);
   }
 
   @Order(2)
@@ -35,7 +35,7 @@ public class VehicleTripTest {
 
     //then
     //TODO 100km uses 8liters per 5 zlotys each - implement null
-    //assertThat(vehicleTrip.calculateCost(null)).isEqualTo(96);
+    assertThat(vehicleTrip.calculateCost()).isEqualTo(96f);
   }
 
   @Order(3)
@@ -50,6 +50,6 @@ public class VehicleTripTest {
 
     //then
     //TODO 100km uses 30kWh per 0,5 zlotys each - implement null
-    assertThat(vehicleTrip.calculateCost()).isEqualTo(36);
+    assertThat(vehicleTrip.calculateCost()).isEqualTo(36f);
   }
 }
