@@ -15,7 +15,7 @@ public class ConditionalDiscount implements Discount{
     @Override
     public int calculate(int actualPrice, InsuranceReport insuranceReport) {
         if(discountPredicate.shouldApply(actualPrice, insuranceReport)){
-            discount.calculate(actualPrice, insuranceReport);
+            return discount.calculate(actualPrice, insuranceReport);
         }
         return actualPrice;
     }

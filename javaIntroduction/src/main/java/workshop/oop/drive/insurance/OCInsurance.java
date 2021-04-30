@@ -46,7 +46,9 @@ public class OCInsurance {
   }
 
   public void addNoClaimRelativeDiscount(int discount) {
-    queue.add(new NoClaimsRelativeDiscount(discount));
+    queue.add(
+            new NoClaimsRelativeDiscount(discount)
+    );
   }
 
   public void register(Claim claim) {

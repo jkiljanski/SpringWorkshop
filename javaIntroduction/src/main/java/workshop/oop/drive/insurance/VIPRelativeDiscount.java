@@ -1,17 +1,11 @@
 package workshop.oop.drive.insurance;
 
-public class VIPRelativeDiscount implements Discount {
-    private Discount relativeDiscount;
+public class VIPRelativeDiscount extends ConditionalDiscount{
 
     public VIPRelativeDiscount(int percent) {
-        relativeDiscount = new RelativeDiscount(percent);
-    }
-
-    @Override
-    public int calculate(int actualPrice, InsuranceReport insuranceReport) {
-        if (actualPrice > 7000) {
-            return this.relativeDiscount.calculate(actualPrice, insuranceReport);
-        }
-        return actualPrice;
+        super(
+                (actualPrice, insuranceReport) -> actualPrice > 7000,
+                new RelativeDiscount(percent)
+        );
     }
 }
