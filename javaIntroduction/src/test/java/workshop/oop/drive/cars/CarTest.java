@@ -10,9 +10,14 @@ public class CarTest {
   @Test
   public void carHasBlueColor() {
 
-    Car car = new Car();
-    car.color = "blue";
-    assertThat(car.color).isEqualTo("blue");
+    //given
+    Car car = new Car(CarColor.BLUE);
+
+    //when
+    String color = car.describeMeYourColor();
+
+    //then
+    assertThat(color).as("Car should have selected color!").isEqualTo("blue");
   }
 
 

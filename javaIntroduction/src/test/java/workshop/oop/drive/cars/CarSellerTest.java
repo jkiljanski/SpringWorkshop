@@ -19,7 +19,7 @@ public class CarSellerTest {
     //given
     Car car = new Car();
     car.carType = CarType.SEDAN;
-    car.color = "blue";
+    //car.color = "blue";
 
     //when
     String description = carSeller.describe(car);
@@ -34,11 +34,11 @@ public class CarSellerTest {
     //given
     Car car1 = new Car();
     car1.carType = CarType.SEDAN;
-    car1.color = "blue";
+    //car1.color = "blue";
 
     Car car2 = new Car();
     car2.carType = CarType.COMBI;
-    car2.color = "black";
+    //car2.color = "black";
 
 
     //when
