@@ -1,7 +1,10 @@
 package workshop.oop.drive.cars;
 
+import io.vavr.collection.List;
 import workshop.oop.drive.Vehicle;
 import workshop.oop.drive.VehicleParts;
+
+import java.util.stream.Collectors;
 
 public class Car implements Vehicle {
 
@@ -17,7 +20,7 @@ public class Car implements Vehicle {
     this(CarType.SEDAN, CarColor.WHITE);
   }
 
-  public Car(CarType carType, CarColor color) {
+  public Car(CarType carType, CarColor color, VehicleParts ... vehicleParts) {
     this.carType = carType;
     this.color = color;
   }
@@ -29,16 +32,14 @@ public class Car implements Vehicle {
 
   }
 
-
   public String describeMeYourColor() {
-    return this.color.toString().toLowerCase();
+    return this.color.describeYourself();
   }
 
-  public String describeMeYourType() {
-    return this.carType.toString().toLowerCase();
-  }
 
   String describeYourself() {
-    return describeMeYourColor() + " " + describeMeYourType();
+    return List.of(color, carType)
+            .map(CarElementDescribable::describeYourself)
+            .collect(Collectors.joining(" "));
   }
 }

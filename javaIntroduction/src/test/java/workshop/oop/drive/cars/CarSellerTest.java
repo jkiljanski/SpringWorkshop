@@ -72,7 +72,7 @@ public class CarSellerTest {
 
     //when
 
-    String description = carSeller.describe/*WithDetails*/(car); //put it in here
+    String description = carSeller.describeWithDetails(car); //put it in here
 
     //then
     assertThat(description).isEqualTo("Car is a white sedan with black and white tires and ceramic breaks and chromed steering wheel");

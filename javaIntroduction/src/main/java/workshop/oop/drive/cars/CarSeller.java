@@ -27,4 +27,8 @@ public class CarSeller {
     public String describe(java.util.List<Car> carList) {
         return describe(carList.toArray(new Car[0]));
     }
+
+    public String describeWithDetails(Car car) {
+        return null;
+    }
 }
