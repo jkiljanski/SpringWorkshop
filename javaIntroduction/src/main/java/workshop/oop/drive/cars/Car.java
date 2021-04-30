@@ -5,7 +5,7 @@ import workshop.oop.drive.VehicleParts;
 
 public class Car implements Vehicle {
 
-  public CarType carType;
+  private final CarType carType;
 
   private final CarColor color;
 
@@ -14,12 +14,15 @@ public class Car implements Vehicle {
   VehicleParts.SteeringWheel steeringWheel;
 
   public Car() {
-    this(CarColor.WHITE);
+    this(CarType.SEDAN, CarColor.WHITE);
   }
 
-  public Car(CarColor color) {
+  public Car(CarType carType, CarColor color) {
+    this.carType = carType;
     this.color = color;
   }
+
+
 
   @Override
   public void driveForward(int kilometers) {
@@ -29,5 +32,9 @@ public class Car implements Vehicle {
 
   public String describeMeYourColor() {
     return this.color.toString().toLowerCase();
+  }
+
+  public String describeMeYourType() {
+    return this.carType.toString().toLowerCase();
   }
 }

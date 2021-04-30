@@ -13,19 +13,18 @@ public class CarSellerTest {
 
   CarSeller carSeller = new CarSeller();
 
+  @DisplayName("salesman describes a single car")
   @Order(1)
   @Test
   public void describesSingleCar() {
     //given
-    Car car = new Car();
-    car.carType = CarType.SEDAN;
-    //car.color = "blue";
+    Car car = new Car(CarType.SEDAN, CarColor.BLUE);
 
     //when
     String description = carSeller.describe(car);
 
     //then
-    assertThat(description).isEqualTo("Car#1 is a blue sedan");
+    assertThat(description).isEqualTo("Car is a blue sedan");
   }
 
   @Order(2)
@@ -33,11 +32,11 @@ public class CarSellerTest {
   public void describeCoupleOfCars() {
     //given
     Car car1 = new Car();
-    car1.carType = CarType.SEDAN;
+    //car1.carType = CarType.SEDAN;
     //car1.color = "blue";
 
     Car car2 = new Car();
-    car2.carType = CarType.COMBI;
+    //car2.carType = CarType.COMBI;
     //car2.color = "black";
 
 

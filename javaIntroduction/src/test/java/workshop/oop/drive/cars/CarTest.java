@@ -11,7 +11,7 @@ public class CarTest {
   public void carHasBlueColor() {
 
     //given
-    Car car = new Car(CarColor.BLUE);
+    Car car = new Car(CarType.COMBI, CarColor.BLUE);
 
     //when
     String color = car.describeMeYourColor();

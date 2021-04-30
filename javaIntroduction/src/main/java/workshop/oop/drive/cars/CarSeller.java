@@ -4,6 +4,6 @@ public class CarSeller {
 
   public String describe(Car car) {
 
-    return "";
+    return String.format("Car is a %s %s",car.describeMeYourColor(), car.describeMeYourType());
   }
 }
