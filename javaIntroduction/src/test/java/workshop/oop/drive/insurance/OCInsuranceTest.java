@@ -81,8 +81,8 @@ public class OCInsuranceTest {
     //given
     OCInsurance ocInsurance = new OCInsurance(10000);
     //when
-    //ocInsurance.addAbsoluteDiscount(1000);
-    //ocInsurance.addVIPDiscount(50);
+    ocInsurance.addAbsoluteDiscount(1000);
+    ocInsurance.addVIPRelativeDiscount(50);
 
     //then
     assertThat(ocInsurance.calculateFinalPrice()).isEqualTo(4500);
@@ -94,8 +94,8 @@ public class OCInsuranceTest {
     //given
     OCInsurance ocInsurance = new OCInsurance(300);
     //when
-    //ocInsurance.addAbsoluteDiscount(20);
-    //ocInsurance.addVIPDiscount(50);
+    ocInsurance.addAbsoluteDiscount(20);
+    ocInsurance.addVIPRelativeDiscount(50);
 
     //then
     assertThat(ocInsurance.calculateFinalPrice()).isEqualTo(280);

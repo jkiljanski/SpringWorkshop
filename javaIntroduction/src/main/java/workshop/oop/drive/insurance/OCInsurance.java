@@ -37,6 +37,9 @@ public class OCInsurance {
     this.queue = queue.stream()
             .filter(Predicates.not(discount -> discount instanceof AbsoluteDiscount))
             .collect(Collectors.toList());
+  }
 
+  public void addVIPRelativeDiscount(int percentVIP) {
+    this.queue.add(new VIPRelativeDiscount(percentVIP));
   }
 }
