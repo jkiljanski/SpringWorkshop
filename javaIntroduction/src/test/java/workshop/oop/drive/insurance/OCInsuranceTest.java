@@ -67,9 +67,9 @@ public class OCInsuranceTest {
     //given
     OCInsurance ocInsurance = new OCInsurance(300);
     //when
-    //ocInsurance.addAbsoluteDiscount(20);
-    //ocInsurance.addRelativeDiscount(10);
-    //ocInsurance.addAbsoluteDiscount(30);
+    ocInsurance.addAbsoluteDiscount(20);
+    ocInsurance.addRelativeDiscount(10);
+    ocInsurance.addAbsoluteDiscount(30);
 
     //then
     assertThat(ocInsurance.calculateFinalPrice()).isEqualTo(222);

@@ -1,27 +1,28 @@
 package workshop.oop.drive.insurance;
 
 public class OCInsurance {
-  private int price;
+  private final int price;
+  private int absoluteDiscount;
+  private int relativeDiscount;
 
   public OCInsurance(int price) {
-
     this.price = price;
   }
 
   public int calculateFinalPrice() {
-
-    return price;
+    return (price-absoluteDiscount)*(100-relativeDiscount)/100;
   }
 
   public void addAbsoluteDiscount(int amount) {
-    this.price -= amount;
+    absoluteDiscount += amount;
   }
 
   public void addRelativeDiscount(int percent) {
-    this.price -= this.price*percent/100;
+    relativeDiscount = percent;
+
   }
 
   public void removeAbsoluteDiscounts() {
-    //this.price =
+    absoluteDiscount = 0;
   }
 }
