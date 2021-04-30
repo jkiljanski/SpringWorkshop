@@ -42,10 +42,16 @@ public class OCInsurance {
   }
 
   public void addVIPRelativeDiscount(int vipRelativeDiscount) {
-    discountList.add(new VipRelativeDiscount(vipRelativeDiscount));
+    discountList.add(new ConditionalDiscount(
+            (price, sex) -> price > 6000,
+            new RelativeDiscount(vipRelativeDiscount))
+    );
   }
 
-  public void addSexDiscount(Sex female, int i) {
-    discountList.add(new SexRelativeDiscount(female, i));
+  public void addSexDiscount(Sex sex, int discount) {
+    discountList.add(new ConditionalDiscount(
+            (price, insuranceSex) -> insuranceSex == sex,
+            new RelativeDiscount(discount))
+    );
   }
 }
