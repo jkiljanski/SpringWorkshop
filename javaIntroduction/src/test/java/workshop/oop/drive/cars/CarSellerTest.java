@@ -51,18 +51,14 @@ public class CarSellerTest {
   @Test
   public void describeCoupleOfCarsAsList() {
     //given
-    Car car1 = new Car();
-    //car1.carType = CarType.SEDAN;
-    //car1.color = "blue";
+    Car car1 = new Car(CarType.SEDAN, CarColor.BLUE);
 
-    Car car2 = new Car();
-    //car2.carType = CarType.COMBI;
-    //car2.color = "black";
+    Car car2 = new Car(CarType.COMBI, CarColor.BLACK);
 
 
     //when
-    List<Car> objects = List.of(car1, car2);
-    String description = carSeller.describe(); //put it in here
+    List<Car> carList = List.of(car1, car2);
+    String description = carSeller.describe(carList); //put it in here
 
     //then
     assertThat(description).isEqualTo("Car#1 is a blue sedan, Car#2 is a black combi");
