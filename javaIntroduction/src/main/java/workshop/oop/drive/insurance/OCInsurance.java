@@ -3,12 +3,14 @@ package workshop.oop.drive.insurance;
 import io.vavr.Predicates;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class OCInsurance {
   private final int price;
   private List<Discount> queue = new ArrayList<>();
+  private List<Claim> claimList = new LinkedList<>();
 
 
   public OCInsurance(int price) {
@@ -18,7 +20,7 @@ public class OCInsurance {
   public int calculateFinalPrice() {
     int actualPrice = this.price;
     for (Discount discount : queue) {
-      actualPrice = discount.calculate(actualPrice);
+      actualPrice = discount.calculate(actualPrice, new InsuranceReport(claimList));
     }
     return actualPrice;
   }
@@ -42,4 +44,13 @@ public class OCInsurance {
   public void addVIPRelativeDiscount(int percentVIP) {
     this.queue.add(new VIPRelativeDiscount(percentVIP));
   }
+
+  public void addNoClaimRelativeDiscount(int discount) {
+    queue.add(new NoClaimsRelativeDiscount(discount));
+  }
+
+  public void register(Claim claim) {
+    claimList.add(claim);
+  }
+
 }

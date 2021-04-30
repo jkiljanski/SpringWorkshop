@@ -8,7 +8,7 @@ public class AbsoluteDiscount implements Discount{
     }
 
     @Override
-    public int calculate(int actualPrice) {
+    public int calculate(int actualPrice, InsuranceReport insuranceReport) {
         return actualPrice - value;
     }
 }

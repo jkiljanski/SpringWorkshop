@@ -103,12 +103,12 @@ public class OCInsuranceTest {
 
   @Order(8)
   @Test
-  public void addDiscountForNoClaimsThatWorks() {
+  public void addDiscountForNoClaimsThatApplies() {
     //given
     OCInsurance ocInsurance = new OCInsurance(300);
     //when
-    //ocInsurance.addAbsoluteDiscount(20);
-    //ocInsurance.addSexDiscount(Sex.FEMALE, 20); //in percents
+    ocInsurance.addAbsoluteDiscount(20);
+    ocInsurance.addNoClaimRelativeDiscount(20); //in percents
 
     //then
     assertThat(ocInsurance.calculateFinalPrice()).isEqualTo(224);
@@ -116,13 +116,13 @@ public class OCInsuranceTest {
 
   @Order(9)
   @Test
-  public void addDiscountForNoClaimsThatDoesntWork() {
+  public void addDiscountForNoClaimsThatDoesntApply() {
     //given
     OCInsurance ocInsurance = new OCInsurance( 300);
-    //ocInsurance.register(new Claim());
+    ocInsurance.register(new Claim());
     //when
-    //ocInsurance.addAbsoluteDiscount(20);
-    //ocInsurance.addSexDiscount(Sex.FEMALE, 20);
+    ocInsurance.addAbsoluteDiscount(20);
+    ocInsurance.addNoClaimRelativeDiscount(20);
 
     //then
     assertThat(ocInsurance.calculateFinalPrice()).isEqualTo(280);

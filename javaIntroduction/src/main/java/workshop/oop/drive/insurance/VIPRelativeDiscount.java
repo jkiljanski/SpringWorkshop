@@ -7,11 +7,10 @@ public class VIPRelativeDiscount implements Discount {
         relativeDiscount = new RelativeDiscount(percent);
     }
 
-
     @Override
-    public int calculate(int actualPrice) {
+    public int calculate(int actualPrice, InsuranceReport insuranceReport) {
         if (actualPrice > 7000) {
-            return this.relativeDiscount.calculate(actualPrice);
+            return this.relativeDiscount.calculate(actualPrice, insuranceReport);
         }
         return actualPrice;
     }
