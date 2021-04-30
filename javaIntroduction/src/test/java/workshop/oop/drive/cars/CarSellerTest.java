@@ -31,17 +31,17 @@ public class CarSellerTest {
   @Test
   public void describeCoupleOfCars() {
     //given
-    Car car1 = new Car();
+    Car car1 = new Car(CarType.SEDAN, CarColor.BLUE);
     //car1.carType = CarType.SEDAN;
     //car1.color = "blue";
 
-    Car car2 = new Car();
+    Car car2 = new Car(CarType.COMBI, CarColor.BLACK);
     //car2.carType = CarType.COMBI;
     //car2.color = "black";
 
 
     //when
-    String description = carSeller.describe(car1/*, car2*/);
+    String description = carSeller.describe(car1, car2);
 
     //then
     assertThat(description).isEqualTo("Car#1 is a blue sedan, Car#2 is a black combi");
@@ -62,7 +62,7 @@ public class CarSellerTest {
 
     //when
     List<Car> objects = List.of(car1, car2);
-    String description = carSeller.describe(null); //put it in here
+    String description = carSeller.describe(); //put it in here
 
     //then
     assertThat(description).isEqualTo("Car#1 is a blue sedan, Car#2 is a black combi");

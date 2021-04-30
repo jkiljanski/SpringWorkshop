@@ -37,4 +37,8 @@ public class Car implements Vehicle {
   public String describeMeYourType() {
     return this.carType.toString().toLowerCase();
   }
+
+  String describeYourself() {
+    return describeMeYourColor() + " " + describeMeYourType();
+  }
 }
