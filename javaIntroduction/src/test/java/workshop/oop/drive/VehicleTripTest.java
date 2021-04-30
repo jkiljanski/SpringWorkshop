@@ -2,11 +2,16 @@ package workshop.oop.drive;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import workshop.oop.drive.cars.Car;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class VehicleTripTest {
 
+  @Order(1)
   @Test
   public void calculateCostOfRidingBike() {
     //given
@@ -19,6 +24,7 @@ public class VehicleTripTest {
     assertThat(vehicleTrip.calculateCost()).isEqualTo(0);
   }
 
+  @Order(2)
   @Test
   public void calculateCostOfACarRide() {
     //given
@@ -32,6 +38,7 @@ public class VehicleTripTest {
     //assertThat(vehicleTrip.calculateCost(null)).isEqualTo(96);
   }
 
+  @Order(3)
   @Test
   public void calculateCostOfAElectricCarRide() {
     //given

@@ -12,7 +12,7 @@ public class CarTest {
 
     Car car = new Car();
     car.color = "blue";
-    assertThat(car.color).isEqualTo("Blue");
+    assertThat(car.color).isEqualTo("blue");
   }
 
 
