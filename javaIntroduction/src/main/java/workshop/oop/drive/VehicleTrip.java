@@ -1,7 +1,6 @@
 package workshop.oop.drive;
 
 
-import io.vavr.Function1;
 
 public class VehicleTrip {
 

@@ -9,10 +9,6 @@ public class Car implements Vehicle {
 
   public CarType carType;
 
-  public long distanceMeter;
-
-  VehicleParts.SteeringWheel steeringWheel;
-
   @Override
   public void driveForward(int kilometers) {
 
