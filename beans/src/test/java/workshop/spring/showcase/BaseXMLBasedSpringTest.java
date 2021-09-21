@@ -7,18 +7,19 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import workshop.spring.showcase.thirdparty.NotABeanGeneratorWrapper;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(locations = {"classpath:spring-test-config.xml"})
 public class BaseXMLBasedSpringTest {
 
   @Autowired
-  BeanInitializedInXML beanInitializedInXML;
+  NotABeanGeneratorWrapper notABeanGeneratorWrapper;
 
   @Test()
   void wrapperWrapsEmail() {
 
-    String email = beanInitializedInXML.generate();
+    String email = notABeanGeneratorWrapper.generate();
     System.out.println(email);
 
     assertThat(email)

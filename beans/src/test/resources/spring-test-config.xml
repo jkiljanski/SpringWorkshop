@@ -4,9 +4,9 @@
 		http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
 
 
-  <bean id="otherBean" class="workshop.spring.showcase.BeanInitializedInXML">
+  <bean id="otherBean" class="workshop.spring.showcase.thirdparty.NotABeanGeneratorWrapper">
     <constructor-arg ref="emailGenerator"/>
-    <property name="description" value="test description"/>
+    <property name="withDescription" value="test description"/>
   </bean>
 
   <bean id="emailGenerator" class="workshop.spring.showcase.EmailGenerator"/>

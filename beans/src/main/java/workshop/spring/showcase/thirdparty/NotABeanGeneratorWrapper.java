@@ -1,12 +1,14 @@
-package workshop.spring.showcase;
+package workshop.spring.showcase.thirdparty;
+
+import workshop.spring.showcase.EmailGenerator;
 
 //has no @Component annotation
-public class BeanInitializedInXML {
+public class NotABeanGeneratorWrapper {
 
   private final EmailGenerator emailGenerator;
   private String description;
 
-  public BeanInitializedInXML(EmailGenerator emailGenerator) {
+  public NotABeanGeneratorWrapper(EmailGenerator emailGenerator) {
 
     this.emailGenerator = emailGenerator;
   }
@@ -16,8 +18,10 @@ public class BeanInitializedInXML {
     return "wrapped with [" + description + "]: " + emailGenerator.generate();
   }
 
-  public void setDescription(String description) {
+  public NotABeanGeneratorWrapper withDescription(String description) {
 
     this.description = description;
+
+    return this;
   }
 }
