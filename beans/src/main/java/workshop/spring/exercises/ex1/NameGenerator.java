@@ -1,21 +1,13 @@
 package workshop.spring.exercises.ex1;
 
-import org.springframework.stereotype.Component;
-
-@Component
 public class NameGenerator {
 
-  private SequentialNameGiver counter;
+  private NumberGiver numberGiver;
   private String prefix = "customName:";
-  private int i = 1;
 
   public String getNextName() {
 
-    return prefix + i++;
+    return prefix + numberGiver.getAndIncrease();
   }
 
-  public void setPrefix(String prefix) {
-
-    this.prefix = prefix;
-  }
 }
