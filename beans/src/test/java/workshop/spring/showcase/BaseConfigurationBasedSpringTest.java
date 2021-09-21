@@ -16,8 +16,8 @@ public class BaseConfigurationBasedSpringTest {
     @Configuration
     public static class TestConfig {
         @Bean
-        NotABeanGeneratorWrapper otherBean(EmailGenerator emailGenerator){
-            return new NotABeanGeneratorWrapper(emailGenerator).withDescription("krowa");
+        NotABeanGeneratorWrapper otherBean(){
+            return new NotABeanGeneratorWrapper(emailGenerator()).withDescription("krowa");
         }
 
         @Bean

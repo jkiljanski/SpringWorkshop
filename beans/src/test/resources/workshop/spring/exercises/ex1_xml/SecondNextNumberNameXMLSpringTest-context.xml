@@ -7,5 +7,5 @@
 	<bean class="workshop.spring.exercises.ex1_xml.NameGenerator">
 		<constructor-arg ref = "nextnumbergiver"/>
 	</bean>
-	<bean id = "nextnumbergiver" class="workshop.spring.exercises.ex1_xml.NextNumberGiver"/>
+	<bean id = "nextnumbergiver" class="workshop.spring.exercises.ex1_xml.EvenNumberGiver"/>
 </beans>

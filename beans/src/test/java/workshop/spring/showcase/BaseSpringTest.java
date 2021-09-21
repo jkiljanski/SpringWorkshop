@@ -10,7 +10,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ExtendWith(SpringExtension.class)
-//@ContextConfiguration
 public class BaseSpringTest {
 
   @Configuration
