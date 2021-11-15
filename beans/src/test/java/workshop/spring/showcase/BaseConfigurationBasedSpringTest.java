@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ExtendWith(SpringExtension.class)
 public class BaseConfigurationBasedSpringTest {
 
-    @Configuration
+
     public static class TestConfig {
         @Bean
         NotABeanGeneratorWrapper otherBean(){

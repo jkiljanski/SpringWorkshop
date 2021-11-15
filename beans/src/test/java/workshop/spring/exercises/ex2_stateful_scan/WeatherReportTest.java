@@ -16,8 +16,8 @@ import static org.mockito.BDDMockito.given;
 public class WeatherReportTest {
 
     WeatherReportGeneratingService weatherReportGeneratingService;
-    TemperatureStation temperatureStation;
-    WindStation windStation;
+    TemperatureStation temperatureStationMock;
+    WindStation windStationMock;
 
     @Configuration
     @ComponentScan(basePackages = "workshop.spring.exercises.ex2_stateful_scan")
@@ -26,8 +26,8 @@ public class WeatherReportTest {
 
     @BeforeEach
     public void setUpStations(){
-        given(temperatureStation.getCurrentTemp()).willReturn(10, 12, 17, 25, 26);
-        given(windStation.getCurrentWind()).willReturn(0, 2, 35, 25, 3);
+        given(temperatureStationMock.getCurrentTemp()).willReturn(10, 12, 17, 25, 26);
+        given(windStationMock.getCurrentWind()).willReturn(0, 2, 35, 25, 3);
     }
 
     @Order(1)
