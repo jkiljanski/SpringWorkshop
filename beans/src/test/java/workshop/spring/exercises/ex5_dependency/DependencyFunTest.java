@@ -9,10 +9,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.ContextConfiguration;
-import workshop.spring.exercises.ex5_dependency.processing.ConstructorController;
-import workshop.spring.exercises.ex5_dependency.processing.FieldController;
+import workshop.spring.exercises.ex5_dependency.processing.ConstructorProcessor;
+import workshop.spring.exercises.ex5_dependency.processing.FieldProcessor;
 import workshop.spring.exercises.ex5_dependency.processing.ProcessingMachine;
-import workshop.spring.exercises.ex5_dependency.processing.SetterController;
+import workshop.spring.exercises.ex5_dependency.processing.SetterProcessor;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -46,9 +46,11 @@ public class DependencyFunTest {
 
     assertThat(element.getProcessedBy())
         .containsExactly(
-                FieldController.class.getSimpleName(),
-                SetterController.class.getSimpleName(),
-                ConstructorController.class.getSimpleName()
+                FieldProcessor.class.getSimpleName(),
+                SetterProcessor.class.getSimpleName(),
+                ConstructorProcessor.class.getSimpleName()
         );
+
+    //have you activated controllers?
   }
 }

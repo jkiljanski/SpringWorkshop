@@ -24,4 +24,8 @@ public class NotABeanGeneratorWrapper {
 
     return this;
   }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
 }

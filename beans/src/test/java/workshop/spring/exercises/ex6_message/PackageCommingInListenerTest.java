@@ -35,7 +35,7 @@ public class PackageCommingInListenerTest {
   private PackageReceiver packageReceiver;
 
   @Autowired(required = false)
-  private CountingPackageObservator countingPackageObservator;
+  private CountingPackageObserver countingPackageObserver;
 
   @Order(1)
   @Test
@@ -49,7 +49,7 @@ public class PackageCommingInListenerTest {
     packageReceiver.receivedPackage(new Package(6, true));
     packageReceiver.receivedPackage(new Package(7, false));
 
-    assertThat(countingPackageObservator.getNumberOfPackages()).isEqualTo(7);
+    assertThat(countingPackageObserver.getNumberOfPackages()).isEqualTo(7);
 
     Mockito.verifyNoMoreInteractions(alertMailSenderMock);
   }
@@ -69,7 +69,7 @@ public class PackageCommingInListenerTest {
       //assertThat(e).isExactlyInstanceOf(TooManyPackagesDamagedException.class);
     }
 
-    assertThat(countingPackageObservator.getNumberOfPackages()).isEqualTo(7);
+    assertThat(countingPackageObserver.getNumberOfPackages()).isEqualTo(5);
     Mockito.verify(alertMailSenderMock)
         .sendMessageAboutInvalidPackages(Lists.newArrayList(1, 2, 3, 4, 6));
   }

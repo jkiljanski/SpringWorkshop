@@ -6,7 +6,7 @@
 
   <bean id="otherBean" class="workshop.spring.showcase.thirdparty.NotABeanGeneratorWrapper">
     <constructor-arg ref="emailGenerator"/>
-    <property name="withDescription" value="test description"/>
+    <property name="description" value="test description"/>
   </bean>
 
   <bean id="emailGenerator" class="workshop.spring.showcase.EmailGenerator"/>
