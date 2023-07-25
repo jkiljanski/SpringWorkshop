@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -19,6 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @SpringBootTest
 @ContextConfiguration
+@DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 public class PackageCommingInListenerTest {
   @Configuration
   @ComponentScan(basePackages = "workshop.spring.exercises.ex6_message")
@@ -31,10 +33,10 @@ public class PackageCommingInListenerTest {
   @MockBean
   private AlertMailSender alertMailSenderMock;
 
-  @Autowired(required = false)
+  @Autowired
   private PackageReceiver packageReceiver;
 
-  @Autowired(required = false)
+  @Autowired
   private CountingPackageObserver countingPackageObserver;
 
   @Order(1)
@@ -66,11 +68,11 @@ public class PackageCommingInListenerTest {
     try {
       packageReceiver.receivedPackage(new Package(6, true));
     } catch (Exception e) {
-      //assertThat(e).isExactlyInstanceOf(TooManyPackagesDamagedException.class);
+      assertThat(e).isExactlyInstanceOf(TooManyPackagesDamagedException.class);
     }
 
-    assertThat(countingPackageObserver.getNumberOfPackages()).isEqualTo(5);
     Mockito.verify(alertMailSenderMock)
         .sendMessageAboutInvalidPackages(Lists.newArrayList(1, 2, 3, 4, 6));
+    assertThat(countingPackageObserver.getNumberOfPackages()).isEqualTo(5);
   }
 }

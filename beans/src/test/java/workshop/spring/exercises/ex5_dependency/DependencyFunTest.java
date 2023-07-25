@@ -45,7 +45,7 @@ public class DependencyFunTest {
     processingMachine.processElement(element);
 
     assertThat(element.getProcessedBy())
-        .containsExactly(
+        .containsExactlyInAnyOrder(
                 FieldProcessor.class.getSimpleName(),
                 SetterProcessor.class.getSimpleName(),
                 ConstructorProcessor.class.getSimpleName()

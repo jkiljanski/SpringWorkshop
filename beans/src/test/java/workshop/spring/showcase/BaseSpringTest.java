@@ -1,13 +1,14 @@
 package workshop.spring.showcase;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import workshop.spring.showcase.thirdparty.NotABeanGeneratorWrapper;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(SpringExtension.class)
 //@ContextConfiguration
@@ -22,6 +23,9 @@ public class BaseSpringTest {
   @Autowired
   EmailGenerator emailGenerator;
 
+  @Autowired
+  NotABeanGeneratorWrapper notABeanGeneratorWrapper;
+
   @Test
   void testEmailGenerator() {
 
@@ -29,6 +33,8 @@ public class BaseSpringTest {
     System.out.println(email);
 
     assertThat(email).isNotNull().isEqualTo("feedback@yoursite.com");
+
+    notABeanGeneratorWrapper.generate();
 
 
   }

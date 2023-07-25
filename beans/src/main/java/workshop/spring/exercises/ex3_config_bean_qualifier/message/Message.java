@@ -5,7 +5,7 @@ public class Message {
   private String processedBy;
 
   //TODO: Look out this only available inside package
-  void setProcessedBy(String processedBy) {
+  public void setProcessedBy(String processedBy) {
 
     this.processedBy = processedBy;
   }

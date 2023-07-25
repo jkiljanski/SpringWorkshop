@@ -9,6 +9,6 @@
 		<property name="numberGiver" ref="numberGiver"/>
 	</bean>
 
-	<bean class="workshop.spring.exercises.ex1_xml.NextNumberGiver" name="numberGiver" scope="prototype"/>
+	<bean class="workshop.spring.exercises.ex1_xml.NextOddNumberGiver" name="numberGiver" scope="prototype"/>
 
 </beans>

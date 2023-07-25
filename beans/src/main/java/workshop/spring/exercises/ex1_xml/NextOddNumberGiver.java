@@ -1,16 +1,16 @@
 package workshop.spring.exercises.ex1_xml;
 
-public class NextNumberGiver implements  NumberGiver{
+public class NextOddNumberGiver implements  NumberGiver{
 
-    int i=1;
+    int i=0;
 
     @Override
     public int getAndIncrease() {
-        return i++;
+        return i+=2;
     }
 
     @Override
     public void reset() {
-        i=1;
+        i=0;
     }
 }

@@ -10,4 +10,15 @@ public class NameGenerator {
     return prefix + numberGiver.getAndIncrease();
   }
 
+  public NumberGiver getNumberGiver() {
+    return numberGiver;
+  }
+
+  public void setNumberGiver(NumberGiver numberGiver) {
+    this.numberGiver = numberGiver;
+  }
+
+  public void reset() {
+    numberGiver.reset();
+  }
 }

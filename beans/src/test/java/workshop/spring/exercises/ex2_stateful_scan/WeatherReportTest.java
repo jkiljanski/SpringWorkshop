@@ -2,6 +2,8 @@ package workshop.spring.exercises.ex2_stateful_scan;
 
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.ContextConfiguration;
@@ -15,8 +17,13 @@ import static org.mockito.BDDMockito.given;
 @ContextConfiguration
 public class WeatherReportTest {
 
+    @Autowired
     WeatherReportGeneratingService weatherReportGeneratingService;
+
+    @MockBean
     TemperatureStation temperatureStation;
+
+    @MockBean
     WindStation windStation;
 
     @Configuration

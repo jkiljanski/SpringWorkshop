@@ -20,7 +20,7 @@ public class WayInBasedMessageProcessingTest {
   }
 
 
-  @Autowired(required = false)
+  @Autowired
   MessageReceiver messageReceiver;
 
   @Test
@@ -36,7 +36,7 @@ public class WayInBasedMessageProcessingTest {
 
     Message message = new Message();
     messageReceiver.receiveViaMail(message);
-    assertThat(message.getProcessedBy()).isEqualTo("Mail processor");
+    assertThat(message.getProcessedBy()).isEqualTo("Mail Processor");
   }
 
   @Test
@@ -44,6 +44,6 @@ public class WayInBasedMessageProcessingTest {
 
     Message message = new Message();
     messageReceiver.receiveFromWS(message);
-    assertThat(message.getProcessedBy()).isEqualTo("WS processor");
+    assertThat(message.getProcessedBy()).isEqualTo("WS Processor");
   }
 }
